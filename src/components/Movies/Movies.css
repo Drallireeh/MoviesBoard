@@ -1,0 +1,33 @@
+.movie-cnt {
+    cursor: pointer;
+    display: flex;
+    justify-content: flex;
+    flex-direction: column;
+    color: black;
+    background-color: lightgrey;
+}
+
+.movie-cnt > * {
+    text-align: center;
+}
+
+.movie-cnt > h2 {
+    font-size: 1.5rem;
+}
+
+.movie-cnt > img {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+.movie-cnt > p,
+.movie-cnt > span {
+    margin-bottom: 5px;
+}
+
+.movie-cnt > div:last-of-type {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 5px;
+}
