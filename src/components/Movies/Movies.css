@@ -11,22 +11,31 @@
     background-color: lightgrey;
 }
 
-.movie-cnt > * {
+.movie-cnt .link-movie {
+    display: contents;
+    color: black;
+}
+
+.movie-cnt .link-movie:hover {
+    text-decoration: none;
+}
+
+.movie-cnt .link-movie > * {
     text-align: center;
 }
 
-.movie-cnt > h2 {
+.movie-cnt .link-movie > h2 {
     font-size: 1.5rem;
 }
 
-.movie-cnt > img {
+.movie-cnt .link-movie > img {
     width: 50%;
     margin: auto;
     margin-bottom: 5px;
 }
 
-.movie-cnt > p,
-.movie-cnt > span {
+.movie-cnt .link-movie > p,
+.movie-cnt .link-movie > span {
     margin-bottom: 5px;
 }
 
