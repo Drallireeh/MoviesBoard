@@ -1,3 +1,7 @@
+.list-movies > h1{
+    text-align: center;
+}
+
 .movie-cnt {
     cursor: pointer;
     display: flex;

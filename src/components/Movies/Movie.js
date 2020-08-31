@@ -9,8 +9,8 @@ const Movie = (props) => {
             <p>{props.movie.description}</p>
             <span>Sortit le {props.movie.release_date}</span>
             <div>
-                <button className="btn btn-primary">Ajouter</button>
-                <button className="btn btn-primary">Supprimer</button>
+                <button className="btn btn-success">Ajouter</button>
+                <button className="btn btn-danger">Supprimer</button>
             </div>
 		</div>
 	);

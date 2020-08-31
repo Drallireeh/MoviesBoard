@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Movies from './components/Movies/Movies';
+import Search from './components/Search/Search';
 import axios from 'axios';
 import './App.css';
 
@@ -10,43 +13,43 @@ function App() {
 		axios.get(`http://localhost:3000/movies`)
 			.then(movie => {
 				const moviesData = movie.data;
-				console.log("RES : ", moviesData);
 				setMovies(moviesData)
-				// moviesData.map((mov) => (
-				// ));
+			})
+			.catch(error => {
+				alert(error)
 			});
-
-			
-		}, [])
-		console.log("movies : ", movies)
+	}, []);
 
 	return (
-		<div className="App">
-			<nav className="navbar navbar-expand-lg navbar-light bg-light">
-				<a className="navbar-brand" href="#">Navbar</a>
-				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span className="navbar-toggler-icon"></span>
-				</button>
+		<Router>
+			<div className="App">
+				<nav className="navbar navbar-expand-lg navbar-light bg-light">
+					<a className="navbar-brand" href="#">Navbar</a>
+					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span className="navbar-toggler-icon"></span>
+					</button>
 
-				<div className="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul className="navbar-nav mr-auto">
-						<li className="nav-item active">
-							<a className="nav-link" href="#">Liste de films<span className="sr-only">(current)</span></a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="#">Ajouter un film</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="#">Modifier un film</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
+					<div className="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul className="navbar-nav mr-auto">
+							<li className="nav-item active">
+								<Link className="nav-link" to="/movies">Liste de films<span className="sr-only">(current)</span></Link>
+							</li>
+							<li className="nav-item">
+								<Link className="nav-link" to="/ajouter">Ajouter un film</Link>
+							</li>
+							<li className="nav-item">
+								<Link className="nav-link" to="/MABITE">Modifier un film</Link>
+							</li>
+						</ul>
+					</div>
+				</nav>
 
-			<main>
-				<Movies movies={movies}/>
-			</main>
-		</div>
+				<main>
+					<Route path="/movies"><Movies movies={movies} /></Route>
+					<Route path="/ajouter"><Search /></Route>
+				</main>
+			</div>
+		</Router>
 	);
 }
 
