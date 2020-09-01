@@ -3,13 +3,16 @@ import './Movies.css';
 import { Link } from "react-router-dom";
 
 const Movie = (props) => {
+
+    const movie = props.movie;
+
 	return (
-		<div className="movie-cnt col-md-4 col-sm-12" to={"/" + props.movie.id}>
-            <Link className="link-movie" to={"/" + props.movie.id}>
-                <h2>{props.movie.title}</h2>
-                <img className="wrapper" src={props.movie.poster !== "" ? props.movie.poster : props.movie.backdrop} />
-                <p>{props.movie.description}</p>
-                <span>Sortit le {props.movie.release_date}</span>
+		<div className="movie-cnt col-md-4 col-sm-12" to={"/" + movie.id}>
+            <Link className="link-movie" to={"/" + movie.id}>
+                <h2>{movie.title}</h2>
+                <img className="wrapper" src={movie.poster !== "" ? movie.poster : movie.backdrop} />
+                <p>{movie.description}</p>
+                <span>Sorti le {movie.release_date}</span>
             </Link>
             <div>
                 <button className="btn btn-success">Modifier</button>

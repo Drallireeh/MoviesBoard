@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Movies from './components/Movies/Movies';
-import Search from './components/Search/Search';
+import AddMovies from './components/AddMovies/AddMovies';
 import axios from 'axios';
 import './App.css';
 
@@ -35,10 +34,10 @@ function App() {
 								<Link className="nav-link" to="/movies">Liste de films<span className="sr-only">(current)</span></Link>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link" to="/ajouter">Ajouter un film</Link>
+								<Link className="nav-link" to="/add">Ajouter un film</Link>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link" to="/MABITE">Modifier un film</Link>
+								<Link className="nav-link" to="/modify">Modifier un film</Link>
 							</li>
 						</ul>
 					</div>
@@ -46,7 +45,7 @@ function App() {
 
 				<main>
 					<Route path="/movies"><Movies movies={movies} /></Route>
-					<Route path="/ajouter"><Search /></Route>
+					<Route path="/add"><AddMovies /></Route>
 				</main>
 			</div>
 		</Router>

@@ -1,0 +1,9 @@
+.add-movie-cnt form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.add-movie-cnt form .submit {
+    width:250px;
+}
