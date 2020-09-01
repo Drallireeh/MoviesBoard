@@ -4,7 +4,7 @@ import './AddMovies.css';
 const AddMovieFinalForm = (props) => {
 
     console.log("final : ", props)
-    const movieInfo = props.movie[0];
+    const movieInfo = props.movie;
 
     return (
         <section className="add-movie-cnt">

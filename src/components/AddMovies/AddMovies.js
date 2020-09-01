@@ -36,17 +36,25 @@ const AddMovies = () => {
     }
 
     const AddMovie = (id) => {
-        const movie = moviesSearch.filter(movie => movie.id === id);
+        const movie = moviesSearch.filter(movie => movie.id === id)[0];
 
-        setMovieToAdd(movie);
+        const requestActors = axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`);
+        const requestSimilar = axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${api_key}`);
+
+        axios.all([requestActors, requestSimilar]).then(axios.spread((...res) => {
+            const actors = res[0];
+            const similar = res[1];
+            setMovieToAdd({...movie, actors: actors.data.cast.slice(0, 3), similar: similar.data.results.slice(0, 3)});
+        })).catch(err => alert(err));
+
         setIsMovieToAdd(true);
     }
 
     return (
         <section className="add-movie-cnt col-md-12">
-            {!isMovieToAdd && <SearchMovie startSearch={startSearch} handleChangeTitle={handleChangeTitle} handleChangeDate={handleChangeDate}/>}
-            
-            {movieToAdd !== null && isMovieToAdd ? <AddMovieFinalForm movie={movieToAdd}/> : <MoviesResult moviesSearch={moviesSearch} AddMovie={AddMovie} />}
+            {!isMovieToAdd && <SearchMovie startSearch={startSearch} handleChangeTitle={handleChangeTitle} handleChangeDate={handleChangeDate} />}
+
+            {movieToAdd !== null && isMovieToAdd ? <AddMovieFinalForm movie={movieToAdd} /> : <MoviesResult moviesSearch={moviesSearch} AddMovie={AddMovie} />}
         </section>
     );
 };
