@@ -25,7 +25,6 @@ const AddMovies = () => {
 
     const startSearch = (event) => {
         event.preventDefault();
-        console.log(title, date)
         axios.get(`${base_url}api_key=${api_key}&query=${title}&primary_release_year=${date}`)
             .then(res => {
                 console.log(res);
