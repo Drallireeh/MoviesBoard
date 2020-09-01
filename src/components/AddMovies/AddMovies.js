@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import MoviesResult from './MoviesResult';
+import AddMovieFinalForm from './AddMovieFinalForm';
+import SearchMovie from "./SearchMovie";
 import './AddMovies.css';
 import axios from 'axios';
 
@@ -10,6 +12,8 @@ const AddMovies = () => {
     const [title, setTitle] = useState(null);
     const [date, setDate] = useState(null);
     const [moviesSearch, setMoviesSearch] = useState([]);
+    const [movieToAdd, setMovieToAdd] = useState(null);
+    const [isMovieToAdd, setIsMovieToAdd] = useState(false);
 
     const handleChangeTitle = (event) => {
         setTitle(event.target.value);
@@ -19,7 +23,7 @@ const AddMovies = () => {
         setDate(event.target.value);
     }
 
-    const StartSearch = (event) => {
+    const startSearch = (event) => {
         event.preventDefault();
         console.log(title, date)
         axios.get(`${base_url}api_key=${api_key}&query=${title}&primary_release_year=${date}`)
@@ -32,16 +36,18 @@ const AddMovies = () => {
             })
     }
 
+    const AddMovie = (id) => {
+        const movie = moviesSearch.filter(movie => movie.id === id);
+
+        setMovieToAdd(movie);
+        setIsMovieToAdd(true);
+    }
+
     return (
         <section className="add-movie-cnt col-md-12">
-            <form onSubmit={(e) => StartSearch(e)}>
-                <label htmlFor="title">Titre</label>
-                <input type="text" name="title" placeholder="Titre du film" onChange={(e) => handleChangeTitle(e)} />
-                <label htmlFor="date">Date de sortie</label>
-                <input type="text" name="date" placeholder="Date au format jj-mm-aaaa" onChange={(e) => handleChangeDate(e)} />
-                <input type="submit" className="submit btn btn-primary"></input>
-            </form>
-                <MoviesResult moviesSearch={moviesSearch} />
+            {!isMovieToAdd && <SearchMovie startSearch={startSearch} handleChangeTitle={handleChangeTitle} handleChangeDate={handleChangeDate}/>}
+            
+            {movieToAdd !== null && isMovieToAdd ? <AddMovieFinalForm movie={movieToAdd}/> : <MoviesResult moviesSearch={moviesSearch} AddMovie={AddMovie} />}
         </section>
     );
 };

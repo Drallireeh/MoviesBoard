@@ -11,7 +11,7 @@ const MovieResult = (props) => {
             <h2>{props.movie.title}</h2>
             <img className="wrapper" src={"http://image.tmdb.org/t/p/w185" + img_url} />
             <span>Sorti le {props.movie.release_date}</span>
-            <button className="btn btn-success">Ajouter</button>
+            <button className="btn btn-success" onClick={() => props.AddMovie(props.movie.id)}>Ajouter</button>
         </div>
     );
 };

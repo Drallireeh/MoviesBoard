@@ -9,7 +9,7 @@ const MoviesResult = (props) => {
         <section className="list-movies">
             {props.moviesSearch.map(function (movie, index) {
                 return (
-                    <MovieResult movie={movie} key={index} />
+                    <MovieResult movie={movie} key={index} AddMovie={props.AddMovie} />
                 )
             })}
         </section>
