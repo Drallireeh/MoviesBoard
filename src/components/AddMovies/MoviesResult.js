@@ -7,11 +7,11 @@ const MoviesResult = (props) => {
 
     return (
         <section className="list-movies">
-            {props.moviesSearch.length > 0 ? props.moviesSearch.map(function (movie, index) {
+            {props.moviesSearch.map(function (movie, index) {
                 return (
                     <MovieResult movie={movie} key={index} />
                 )
-            }) : <div></div>}
+            })}
         </section>
     );
 };

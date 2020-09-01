@@ -5,7 +5,6 @@ const MovieResult = (props) => {
     console.log("props last : ", props)
 
     const img_url = props.movie.poster_path !== "" ? props.movie.poster_path : props.movie.backdrop_path;
-    console.log(img_url)
 
     return (
         <div className="movie-cnt col-md-4 col-sm-12" to={"/" + props.movie.id}>
