@@ -37,14 +37,20 @@ const AddMovies = () => {
 
     const AddMovie = (id) => {
         const movie = moviesSearch.filter(movie => movie.id === id)[0];
-
+        
         const requestActors = axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`);
         const requestSimilar = axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${api_key}`);
+        const requestDetails = axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`);
+        // const requestDetails = axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`);
 
-        axios.all([requestActors, requestSimilar]).then(axios.spread((...res) => {
+        axios.all([requestActors, requestSimilar, requestDetails]).then(axios.spread((...res) => {
             const actors = res[0];
             const similar = res[1];
-            setMovieToAdd({...movie, actors: actors.data.cast.slice(0, 3), similar: similar.data.results.slice(0, 3)});
+            const details = res[2];
+            let genre = details.data.genres;
+            let genreArray = genre.map(g => g.name);
+
+            setMovieToAdd({...movie, actors: actors.data.cast.slice(0, 3), similar: similar.data.results.slice(0, 3), categories: genreArray});
         })).catch(err => alert(err));
 
         setIsMovieToAdd(true);

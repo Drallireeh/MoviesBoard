@@ -16,7 +16,7 @@ const AddMovieFinalForm = (props) => {
                 <input required type="text" name="actors" id="actors" defaultValue={""} placeholder="Séparer les acteurs par des ','" />
 
                 <label htmlFor="category">Catégories</label>
-                <input required type="text" name="category" id="category" defaultValue={""} placeholder="Séparer les catégories par des ','" />
+                <input required type="text" name="category" id="category" defaultValue={movieInfo.categories.join(", ")} placeholder="Séparer les catégories par des ','" />
 
                 <label htmlFor="similar-movies">Films similaires</label>
                 <input required type="text" name="similar-movies" id="similar-movies" defaultValue={""} placeholder="Séparer les films par des ','" />
