@@ -21,20 +21,29 @@
     display: flex;
     flex-wrap: wrap;
     text-align: center;
+    justify-content: space-around;
 }
 
 .add-movie-cnt .list-movies > .movie-result-cnt {
     margin-bottom: 10px;
-    height: 370px;
-}
-
-.add-movie-cnt .list-movies > .movie-result-cnt > div:first-of-type {
     background-color: lightgray;
-    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+    min-width: 310px;
+    height: 400px;
+    border-radius: 20px;
 }
 
-.add-movie-cnt .list-movies > * img {
-    width: 50%;
+.add-movie-cnt .list-movies > div {
+    max-width: 50%;
+    text-align: center;
+}
+
+.add-movie-cnt .list-movies > div img {
+    width: 100%;
     margin: auto;
 }
 

@@ -10,16 +10,18 @@ const AddMovieFinalForm = (props) => {
         categories: [],
         release_date: "",
         overview: "",
-        actors: [{
-            name: "",
-            photo: "",
-            character: ""
-        }],
-        similar_movies: [{
-            title: "",
-            poster: "",
-            release_date: ""
-        }]
+        similar_movies: []
+    });
+    const [actorValues, setActorsValues] = useState([{
+        name: "",
+        photo: "",
+        character: "",
+        id: 0
+    }]);
+    const [similarValues, setSimilarValues] = useState({
+        title: "",
+        poster_path: "",
+        release_date: ""
     });
 
     console.log("add movie final form : ", props)
@@ -27,6 +29,7 @@ const AddMovieFinalForm = (props) => {
 
     useEffect(() => {
         setFormValues(movieInfo);
+        setActorsValues(movieInfo.actors);
     }, []);
 
     const onUpdateData = event => {
@@ -48,6 +51,17 @@ const AddMovieFinalForm = (props) => {
         data["categories"] = categories;
         setFormValues(data);
     };
+
+    const onUpdateActors = event => {
+        const target = event.target,
+            value = target.value,
+            name = target.name;
+
+        const data = { ...actorValues };
+        data[name] = value;
+        setActorsValues(data);
+        setFormValues({...formValues, actors: actorValues});
+    }
 
     return (
         <section className="add-movie-cnt">
@@ -74,9 +88,9 @@ const AddMovieFinalForm = (props) => {
                     <h3>Acteurs</h3>
                     <button className="btn btn-primary">Ajouter un acteur</button>
 
-                    {formValues.actors.map(function (actor, index) {
+                    {movieInfo.actors.map(function (actor, index) {
                         return (
-                            <FormActor actor={actor} key={index} index={index} onUpdateData={onUpdateData} />
+                            <FormActor actor={actor} key={index} index={index} onUpdateActors={onUpdateActors} />
                         );
                     })}
                 </div>

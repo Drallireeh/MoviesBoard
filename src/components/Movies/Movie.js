@@ -10,7 +10,7 @@ const Movie = (props) => {
 		<div className="movie-cnt col-md-4 col-sm-12" to={"/" + movie.id}>
             <Link className="link-movie" to={"/" + movie.id}>
                 <h2>{movie.title}</h2>
-                <img className="wrapper" src={movie.poster !== "" ? movie.poster : movie.backdrop} />
+                <img className="wrapper" src={movie.poster} />
                 <p>{movie.description}</p>
                 <span>Sorti le {movie.release_date}</span>
             </Link>
