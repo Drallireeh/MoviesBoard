@@ -1,0 +1,25 @@
+.details-section {
+    color: #3282b8;
+    padding: 20px;
+}
+
+.details-section > div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.details-section > div > h1 {
+    padding: 5px;
+    font-size: 2.25rem;
+}
+
+.details-section > div > div {
+    width: 300px;
+}
+
+.details-section > div > div > img {
+    width: 100%;
+}

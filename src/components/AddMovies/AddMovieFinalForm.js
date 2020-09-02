@@ -10,13 +10,13 @@ const AddMovieFinalForm = (props) => {
         categories: [],
         release_date: "",
         overview: "",
-        similar_movies: []
+        similar_movies: [],
+        actors: []
     });
     const [actorValues, setActorsValues] = useState([{
         name: "",
         photo: "",
-        character: "",
-        id: 0
+        character: ""
     }]);
     const [similarValues, setSimilarValues] = useState({
         title: "",
@@ -58,19 +58,15 @@ const AddMovieFinalForm = (props) => {
             name = target.name;
 
         const data = { ...actorValues };
-        data[name] = value;
-
         console.log(data)
-        console.log(data[name])
+        console.log(data[name]);
+        console.log(value);
+        data.map((index, data) => {
+            console.log(index, data)
+        })
+        // data[name] = value;
 
-        setActorsValues(data);
-
-        // setFormValues(prevState => ({
-        //     actors: prevState.actors.map((index) => {
-        //       el => el.key === index? { ...el, status: 'done' }: el
-        //     })
-          
-        //   }))
+        // setActorsValues(data);
     }
 
     return (
