@@ -59,8 +59,18 @@ const AddMovieFinalForm = (props) => {
 
         const data = { ...actorValues };
         data[name] = value;
+
+        console.log(data)
+        console.log(data[name])
+
         setActorsValues(data);
-        setFormValues({...formValues, actors: actorValues});
+
+        // setFormValues(prevState => ({
+        //     actors: prevState.actors.map((index) => {
+        //       el => el.key === index? { ...el, status: 'done' }: el
+        //     })
+          
+        //   }))
     }
 
     return (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Movies from './components/Movies/Movies';
 import AddMovies from './components/AddMovies/AddMovies';
+import Details from './components/Details/Details';
 import axios from 'axios';
 import './App.css';
 
@@ -31,7 +32,7 @@ function App() {
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item active">
-								<Link className="nav-link" to="/movies">Liste de films<span className="sr-only">(current)</span></Link>
+								<Link className="nav-link" to="/">Liste de films<span className="sr-only">(current)</span></Link>
 							</li>
 							<li className="nav-item">
 								<Link className="nav-link" to="/add">Ajouter un film</Link>
@@ -44,8 +45,9 @@ function App() {
 				</nav>
 
 				<main>
-					<Route path="/movies"><Movies movies={movies} /></Route>
-					<Route path="/add"><AddMovies /></Route>
+					<Route exact path="/"><Movies movies={movies} /></Route>
+					<Route exact path="/add"><AddMovies /></Route>
+					<Route exact path="/:id"><Details movies={movies}/></Route>
 				</main>
 			</div>
 		</Router>
