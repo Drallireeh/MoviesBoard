@@ -6,7 +6,6 @@ import './AddMovies.css';
 import axios from 'axios';
 
 const AddMovies = () => {
-    const api_key = "0afa2097e0c2ef64f9ce5f27c0e16c99";
     const base_url = "https://api.themoviedb.org/3/search/movie?";
 
     const [title, setTitle] = useState(null);
@@ -25,7 +24,7 @@ const AddMovies = () => {
 
     const startSearch = (event) => {
         event.preventDefault();
-        axios.get(`${base_url}api_key=${api_key}&query=${title}&primary_release_year=${date}`)
+        axios.get(`${base_url}api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${title}&primary_release_year=${date}`)
             .then(res => {
                 console.log(res);
                 setMoviesSearch(res.data.results);
@@ -38,10 +37,10 @@ const AddMovies = () => {
     const AddMovie = (id) => {
         const movie = moviesSearch.filter(movie => movie.id === id)[0];
         
-        const requestActors = axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`);
-        const requestSimilar = axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${api_key}`);
-        const requestDetails = axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`);
-        // const requestDetails = axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`);
+        const requestActors = axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
+        const requestSimilar = axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
+        const requestDetails = axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
+        // const requestDetails = axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
 
         axios.all([requestActors, requestSimilar, requestDetails]).then(axios.spread((...res) => {
             const actors = res[0];
@@ -50,7 +49,7 @@ const AddMovies = () => {
             let genre = details.data.genres;
             let genreArray = genre.map(g => g.name);
 
-            setMovieToAdd({...movie, actors: actors.data.cast.slice(0, 3), similar: similar.data.results.slice(0, 3), categories: genreArray});
+            setMovieToAdd({...movie, actors: actors.data.cast.slice(0, 3), similar_movies: similar.data.results.slice(0, 3), categories: genreArray});
         })).catch(err => alert(err));
 
         setIsMovieToAdd(true);
