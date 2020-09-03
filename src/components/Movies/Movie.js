@@ -3,8 +3,9 @@ import './Movies.css';
 import { Link } from "react-router-dom";
 
 const Movie = (props) => {
-
     const movie = props.movie;
+    
+    
 
 	return (
 		<div className="movie-cnt col-md-4 col-sm-12" to={"/" + movie.id}>
@@ -16,7 +17,7 @@ const Movie = (props) => {
             </Link>
             <div>
                 <button className="btn btn-success">Modifier</button>
-                <button className="btn btn-danger">Supprimer</button>
+                <button className="btn btn-danger" onClick={(e) => props.deleteMovie(movie)}>Supprimer</button>
             </div>
 		</div>
 	);

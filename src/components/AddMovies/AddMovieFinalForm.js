@@ -103,9 +103,7 @@ const AddMovieFinalForm = (props) => {
     }
 
     return (
-
         <section className="add-movie-cnt">
-            {formValues !== null &&
             <form onSubmit={(event) => {
                 event.preventDefault();
                 console.log(formValues)
@@ -155,7 +153,7 @@ const AddMovieFinalForm = (props) => {
                 </div>
 
                 <input value="Ajouter" type="submit" className="submit btn btn-primary"></input>
-            </form>}
+            </form>
         </section>
     );
 };

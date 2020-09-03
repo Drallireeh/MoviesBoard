@@ -45,7 +45,7 @@ function App() {
 				</nav>
 
 				<main>
-					<Route exact path="/"><Movies movies={movies} /></Route>
+					<Route exact path="/"><Movies movies={movies} setMovies={setMovies} /></Route>
 					<Route exact path="/add"><AddMovies /></Route>
 					<Route exact path="/:id"><Details movies={movies}/></Route>
 				</main>
