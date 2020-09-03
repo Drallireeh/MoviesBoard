@@ -5,22 +5,22 @@ import "./Details.css"
 const Details = (props) => {
     let id = useParams();
     console.log("proppppps : ", props)
-    let movie = props.movies.filter(movie => movie.id == id.id);
+    let movie = props.movies.filter(movie => movie.id === Number(id.id))[0];
 
     console.log(movie);
     return (
         <section className="details-section">
-            {movie.length > 0 &&
+            {movie !== undefined &&
                 <div>
                     <div>
-                        <img src={movie[0].poster} />
+                        <img src={movie.poster} />
                     </div>
-                    <h1>{movie[0].title}</h1>
-                    <h2>{movie[0].release_date}</h2>
-                    <h3>{movie[0].categories.join(' / ')}</h3>
-                    <p>{movie[0].description}</p>
+                    <h1>{movie.title}</h1>
+                    <h2>{movie.release_date}</h2>
+                    <h3>{movie.categories.join(' / ')}</h3>
+                    <p>{movie.description}</p>
                     <div>
-                       <img src={movie[0].backdrop} />
+                       <img src={movie.backdrop} />
                     </div>
                 </div>
                 // :

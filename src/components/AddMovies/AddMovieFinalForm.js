@@ -10,26 +10,25 @@ const AddMovieFinalForm = (props) => {
         categories: [],
         release_date: "",
         overview: "",
-        similar_movies: [],
-        actors: []
+        similar_movies: [{
+            title: "",
+            poster_path: "",
+            release_date: ""
+        }],
+        actors: [{
+            name: "",
+            photo: "",
+            character: ""
+        }]
     });
-    const [actorValues, setActorsValues] = useState([{
-        name: "",
-        photo: "",
-        character: ""
-    }]);
-    const [similarValues, setSimilarValues] = useState({
-        title: "",
-        poster_path: "",
-        release_date: ""
-    });
+
+    const [hasNewActor, setHasNewActor] = useState(false);
 
     console.log("add movie final form : ", props)
     const movieInfo = props.movie;
 
     useEffect(() => {
         setFormValues(movieInfo);
-        setActorsValues(movieInfo.actors);
     }, []);
 
     const onUpdateData = event => {
@@ -52,21 +51,32 @@ const AddMovieFinalForm = (props) => {
         setFormValues(data);
     };
 
-    const onUpdateActors = event => {
+    const onUpdateActors = (event, index) => {
         const target = event.target,
             value = target.value,
             name = target.name;
 
-        const data = { ...actorValues };
-        console.log(data)
-        console.log(data[name]);
-        console.log(value);
-        data.map((index, data) => {
-            console.log(index, data)
-        })
-        // data[name] = value;
+        const data = { ...formValues };
+        data["actors"].map(function (data, idx) {
+            return idx === index ? data[name] = value : data;
+        });
+        setFormValues(data);
+    }
 
-        // setActorsValues(data);
+    const onUpdateSimilarMovies = (event, index) => {
+        const target = event.target,
+            value = target.value,
+            name = target.name;
+
+        console.log("NAME  : ", name)
+        const data = { ...formValues };
+        console.log("DATA SIMILAR MOVIE : ", data["similar_movies"])
+        data["similar_movies"].map(function (data, idx) {
+            console.log(idx, index)
+            console.log(idx === index)
+            return idx === index ? data[name] = value : data;
+        });
+        setFormValues(data);
     }
 
     return (
@@ -92,13 +102,17 @@ const AddMovieFinalForm = (props) => {
 
                 <div>
                     <h3>Acteurs</h3>
-                    <button className="btn btn-primary">Ajouter un acteur</button>
+                    <button className="btn btn-primary" onClick={(e) => {
+                        e.preventDefault()
+                        setHasNewActor(true);
+                    }}>Ajouter un acteur</button>
 
                     {movieInfo.actors.map(function (actor, index) {
                         return (
                             <FormActor actor={actor} key={index} index={index} onUpdateActors={onUpdateActors} />
                         );
                     })}
+                    {hasNewActor ? <FormActor actor={""} key={movieInfo.actors.length} index={movieInfo.actors.length} onUpdateActors={onUpdateActors} /> : ""}
                 </div>
 
                 <div>
@@ -107,7 +121,7 @@ const AddMovieFinalForm = (props) => {
 
                     {formValues.similar_movies.map(function (similar_movie, index) {
                         return (
-                            <FormSimilar similar_movie={similar_movie} key={index} index={index} onUpdateData={onUpdateData} />
+                            <FormSimilar similar_movie={similar_movie} key={index} index={index} onUpdateData={onUpdateData} onUpdateSimilarMovies={onUpdateSimilarMovies} />
                         );
                     })}
                 </div>
