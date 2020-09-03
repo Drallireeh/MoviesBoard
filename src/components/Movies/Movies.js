@@ -8,10 +8,8 @@ const Movies = (props) => {
 
     const deleteMovie = (movie) => {
         axios.delete("http://localhost:3000/movies/" + movie.id).then(res => {
-            console.log(res, " Le film a été supprimé");
-            // props.movies.filter(data=> )
-            props.setMovies(props.movies);
-            // window.location.reload(false); // TODO à refaire
+            const movies = props.movies.filter(el => el.id !== movie.id)
+            props.setMovies(movies);
         }).catch(err => alert(err));
     }
 

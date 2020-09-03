@@ -151,7 +151,7 @@ const FormMovie = (props) => {
                         })}
                     </div>
 
-                    <input value="Confirmer" type="submit" className="submit btn btn-primary"></input>
+                    <input value="Confirmer" type="submit" className="submit btn btn-success"></input>
                 </form>}
         </section>
     );
