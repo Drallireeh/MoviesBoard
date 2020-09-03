@@ -14,7 +14,7 @@ const Movie = (props) => {
                 <span>Sorti le {movie.release_date}</span>
             </Link>
             <div>
-                <button className="btn btn-success">Modifier</button>
+                <Link className="btn btn-success" to={"/" + movie.id + "/modifier"}>Modifier</Link>
                 <button className="btn btn-danger" onClick={(e) => props.deleteMovie(movie)}>Supprimer</button>
             </div>
 		</div>

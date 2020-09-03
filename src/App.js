@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Movies from './components/Movies/Movies';
-import AddMovies from './components/AddMovies/AddMovies';
 import Details from './components/Details/Details';
+import AddMovies from './components/AddMovies/AddMovies';
+import FormEdit from './components/Modification/FormEdit';
 import axios from 'axios';
-import FormModif from './components/AddMovies/FormAjout';
 import './App.css';
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
 								<Link className="nav-link" to="/ajouter">Ajouter un film</Link>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link" to="/modifier">Modifier un film</Link>
+								<Link className="nav-link" to="/:id/modifier">Modifier un film</Link>
 							</li>
 						</ul>
 					</div>
@@ -49,7 +49,7 @@ function App() {
 					<Route exact path="/"><Movies movies={movies} setMovies={setMovies} /></Route>
 					<Route exact path="/ajouter"><AddMovies /></Route>
 					<Route exact path="/:id"><Details movies={movies}/></Route>
-					<Route exact path="/modifier"><FormModif movies={movies}/></Route>
+					<Route exact path="/:id/modifier"><FormEdit movies={movies}/></Route>
 				</main>
 			</div>
 		</Router>

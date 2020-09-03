@@ -4,7 +4,7 @@ import axios from 'axios';
 import './Movies.css';
 
 const Movies = (props) => {
-    console.log("props movies : ", props.movies)
+    console.log("props movies tadam : ", props.movies)
 
     const deleteMovie = (movie) => {
         axios.delete("http://localhost:3000/movies/" + movie.id).then(res => {

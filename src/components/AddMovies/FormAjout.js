@@ -1,5 +1,5 @@
 import React from 'react';
-import FormMovie from '../Modification/FormMovie';
+import FormMovie from '../Formulaires/FormMovie';
 import axios from 'axios';
 
 const FormAjout = (props) => {

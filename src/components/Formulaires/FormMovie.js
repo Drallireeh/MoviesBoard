@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import FormActor from '../Modification/FormActors';
-import FormSimilar from '../Modification/FormSilimar';
+import FormActor from './FormActors';
+import FormSimilar from './FormSilimar';
 
 const FormMovie = (props) => {
-    console.log("je suis la : ", props);
+    console.log("je suis dans la modif : ", props);
 
     const [formValues, setFormValues] = useState({
         title: "",
@@ -30,34 +30,38 @@ const FormMovie = (props) => {
     const movieInfo = props.movie;
 
     useEffect(() => {
-        let actors = [];
-        movieInfo.actors.map(actor => {
-            actors.push({
-                name: actor.name,
-                photo: `http://image.tmdb.org/t/p/w185${actor.profile_path}`,
-                character: actor.character
+        if (movieInfo) {
+            console.log("MOVIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE : ", movieInfo)
+            let actors = [];
+            movieInfo.actors.map(actor => {
+                actors.push({
+                    name: actor.name,
+                    photo: `http://image.tmdb.org/t/p/w185${actor.profile_path !== undefined ? actor.profile_path : actor.photo}`,
+                    character: actor.character
+                })
             })
-        })
-        let similar_movies = [];
-        movieInfo.similar_movies.map(movie => {
-            similar_movies.push({
-                title: movie.title,
-                poster: `http://image.tmdb.org/t/p/w185${movie.poster_path}`,
-                release_date: movie.release_date
+            let similar_movies = [];
+            movieInfo.similar_movies.map(movie => {
+                similar_movies.push({
+                    title: movie.title,
+                    poster: `http://image.tmdb.org/t/p/w185${movieInfo.poster_path !== undefined ? movieInfo.poster_path : movieInfo.poster}`,
+                    release_date: movie.release_date
+                })
             })
-        })
-        let datas = {
-            title: movieInfo.title,
-            poster: `http://image.tmdb.org/t/p/w185${movieInfo.poster_path}`,
-            backdrop: `http://image.tmdb.org/t/p/w185${movieInfo.backdrop_path}`,
-            categories: movieInfo.categories,
-            release_date: movieInfo.release_date,
-            description: movieInfo.overview,
-            similar_movies: similar_movies,
-            actors: actors
+            console.log(movieInfo)
+            let datas = {
+                title: movieInfo.title,
+                poster: `${movieInfo.poster_path !== undefined ? "http://image.tmdb.org/t/p/w185" + movieInfo.poster_path : movieInfo.poster}`,
+                backdrop: `${movieInfo.backdrop_path !== undefined ? "http://image.tmdb.org/t/p/w185" + movieInfo.backdrop_path : movieInfo.backdrop}`,
+                categories: movieInfo.categories,
+                release_date: movieInfo.release_date,
+                description: movieInfo.overview ? movieInfo.overview : movieInfo.description,
+                similar_movies: similar_movies,
+                actors: actors
+            }
+            setFormValues(datas);
+            setHasFormValues(true);
         }
-        setFormValues(datas);
-        setHasFormValues(true);
     }, []);
 
     const onUpdateData = event => {
@@ -114,7 +118,7 @@ const FormMovie = (props) => {
                     <input required type="text" name="title" id="title" onChange={onUpdateData} defaultValue={formValues.title} placeholder="Titre du film" />
 
                     <label htmlFor="poster">Affiche du film</label>
-                    <input required type="url" name="poster" id="poster" onChange={onUpdateData} pattern="https?://.+" defaultValue={formValues.poster_path !== null ? "http://image.tmdb.org/t/p/w185" + formValues.poster_path : ""} placeholder="format : http:// ou https://" />
+                    <input required type="url" name="poster" id="poster" onChange={onUpdateData} pattern="https?://.+" defaultValue={formValues.poster} placeholder="format : http:// ou https://" />
 
                     <label htmlFor="categories">Catégories</label>
                     <input required type="text" name="categories" id="categories" onChange={onUpdateCategories} defaultValue={formValues.categories.join(", ")} placeholder="Séparer les catégories par des ','" />
