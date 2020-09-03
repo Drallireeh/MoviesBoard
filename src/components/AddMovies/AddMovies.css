@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-content: center;
     margin-bottom: 10px;
+    color: white;
 }
 
 .add-movie-cnt form .submit {

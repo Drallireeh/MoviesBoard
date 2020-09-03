@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './AddMovies.css';
 import FormActor from './FormActors';
 import FormSimilar from './FormSilimar';
+import axios from 'axios';
 
 const AddMovieFinalForm = (props) => {
     const [formValues, setFormValues] = useState({
@@ -28,7 +29,33 @@ const AddMovieFinalForm = (props) => {
     const movieInfo = props.movie;
 
     useEffect(() => {
-        setFormValues(movieInfo);
+        let actors = [];
+        movieInfo.actors.map(actor => {
+            actors.push({
+                name: actor.name,
+                photo: `http://image.tmdb.org/t/p/w185${actor.profile_path}`,
+                character: actor.character
+            })
+        })
+        let similar_movies = [];
+        movieInfo.similar_movies.map(movie => {
+            similar_movies.push({
+                title: movie.title,
+                poster: `http://image.tmdb.org/t/p/w185${movie.poster_path}`,
+                release_date: movie.release_date
+            })
+        })
+        let datas = {
+            title: movieInfo.title,
+            poster: `http://image.tmdb.org/t/p/w185${movieInfo.poster_path}`,
+            backdrop: `http://image.tmdb.org/t/p/w185${movieInfo.backdrop_path}`,
+            categories: movieInfo.categories,
+            release_date: movieInfo.release_date,
+            description: movieInfo.overview,
+            similar_movies: similar_movies,
+            actors: actors
+        }
+        setFormValues(datas);
     }, []);
 
     const onUpdateData = event => {
@@ -68,22 +95,23 @@ const AddMovieFinalForm = (props) => {
             value = target.value,
             name = target.name;
 
-        console.log("NAME  : ", name)
         const data = { ...formValues };
-        console.log("DATA SIMILAR MOVIE : ", data["similar_movies"])
         data["similar_movies"].map(function (data, idx) {
-            console.log(idx, index)
-            console.log(idx === index)
             return idx === index ? data[name] = value : data;
         });
         setFormValues(data);
     }
 
     return (
+
         <section className="add-movie-cnt">
+            {formValues !== null &&
             <form onSubmit={(event) => {
                 event.preventDefault();
                 console.log(formValues)
+                axios.post("http://localhost:3000/movies", formValues).then(res => {
+                    console.log(res);
+                }).catch(err => alert(err))
             }}>
                 <label htmlFor="title">Titre</label>
                 <input required type="text" name="title" id="title" onChange={onUpdateData} defaultValue={formValues.title} placeholder="Titre du film" />
@@ -97,8 +125,8 @@ const AddMovieFinalForm = (props) => {
                 <label htmlFor="date">Date de sortie</label>
                 <input required type="date" name="date" id="date" onChange={onUpdateData} defaultValue={formValues.release_date} placeholder="Date au format jj-mm-aaaa" />
 
-                <label htmlFor="overview">Description</label>
-                <textarea required type="text" name="overview" id="overview" onChange={onUpdateData} defaultValue={formValues.overview} placeholder="Description" />
+                <label htmlFor="description">Description</label>
+                <textarea required type="text" name="description" id="description" onChange={onUpdateData} defaultValue={formValues.description} placeholder="Description" />
 
                 <div>
                     <h3>Acteurs</h3>
@@ -127,7 +155,7 @@ const AddMovieFinalForm = (props) => {
                 </div>
 
                 <input value="Ajouter" type="submit" className="submit btn btn-primary"></input>
-            </form>
+            </form>}
         </section>
     );
 };
