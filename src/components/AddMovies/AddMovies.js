@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SearchMovie from "./SearchMovie";
 import MoviesResult from './Results/MoviesResult';
-import FormModif from '../Modification/FormModif';
+import FormAjout from './FormAjout';
 import './AddMovies.css';
 import axios from 'axios';
 
@@ -59,7 +59,7 @@ const AddMovies = () => {
         <section className="add-movie-cnt col-md-12">
             {!isMovieToAdd && <SearchMovie startSearch={startSearch} handleChangeTitle={handleChangeTitle} handleChangeDate={handleChangeDate} />}
 
-            {movieToAdd !== null && isMovieToAdd ? <FormModif movie={movieToAdd} /> : <MoviesResult moviesSearch={moviesSearch} AddMovie={AddMovie} />}
+            {movieToAdd !== null && isMovieToAdd ? <FormAjout movie={movieToAdd} /> : <MoviesResult moviesSearch={moviesSearch} AddMovie={AddMovie} />}
         </section>
     );
 };

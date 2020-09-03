@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 const Movie = (props) => {
     const movie = props.movie;
     
-    
-
 	return (
 		<div className="movie-cnt col-md-4 col-sm-12" to={"/" + movie.id}>
             <Link className="link-movie" to={"/" + movie.id}>

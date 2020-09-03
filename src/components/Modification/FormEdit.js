@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import FormActor from './FormActors';
-import FormSimilar from './FormSilimar';
+import FormMovie from './FormMovie';
 import axios from 'axios';
 
-const FormModif = (props) => {
+const FormEdit = (props) => {
     const [formValues, setFormValues] = useState({
         title: "",
         poster_path: "",
@@ -106,50 +105,13 @@ const FormModif = (props) => {
             <form onSubmit={(event) => {
                 event.preventDefault();
                 console.log(formValues)
-                axios.post("http://localhost:3000/movies", formValues).then(res => {
-                    console.log(res);
-                }).catch(err => alert(err))
+                // axios.post("http://localhost:3000/movies", formValues).then(res => {
+                //     console.log(res);
+                // }).catch(err => alert(err))
             }}>
-                <label htmlFor="title">Titre</label>
-                <input required type="text" name="title" id="title" onChange={onUpdateData} defaultValue={formValues.title} placeholder="Titre du film" />
 
-                <label htmlFor="poster">Affiche du film</label>
-                <input required type="url" name="poster" id="poster" onChange={onUpdateData} pattern="https?://.+" defaultValue={formValues.poster_path !== null ? "http://image.tmdb.org/t/p/w185" + formValues.poster_path : ""} placeholder="format : http:// ou https://" />
+                <FormMovie props={formValues} onUpdateData={onUpdateData} onUpdateCategories={onUpdateCategories} onUpdateActors={onUpdateActors} onUpdateSimilarMovies={onUpdateSimilarMovies} setHasNewActor={setHasNewActor}/>
 
-                <label htmlFor="categories">Catégories</label>
-                <input required type="text" name="categories" id="categories" onChange={onUpdateCategories} defaultValue={formValues.categories.join(", ")} placeholder="Séparer les catégories par des ','" />
-
-                <label htmlFor="date">Date de sortie</label>
-                <input required type="date" name="date" id="date" onChange={onUpdateData} defaultValue={formValues.release_date} placeholder="Date au format jj-mm-aaaa" />
-
-                <label htmlFor="description">Description</label>
-                <textarea required type="text" name="description" id="description" onChange={onUpdateData} defaultValue={formValues.description} placeholder="Description" />
-
-                <div>
-                    <h3>Acteurs</h3>
-                    <button className="btn btn-primary" onClick={(e) => {
-                        e.preventDefault()
-                        setHasNewActor(true);
-                    }}>Ajouter un acteur</button>
-
-                    {movieInfo.actors.map(function (actor, index) {
-                        return (
-                            <FormActor actor={actor} key={index} index={index} onUpdateActors={onUpdateActors} />
-                        );
-                    })}
-                    {hasNewActor ? <FormActor actor={""} key={movieInfo.actors.length} index={movieInfo.actors.length} onUpdateActors={onUpdateActors} /> : ""}
-                </div>
-
-                <div>
-                    <h3>Films similaires</h3>
-                    <button className="btn btn-primary">Ajouter un film similaire</button>
-
-                    {formValues.similar_movies.map(function (similar_movie, index) {
-                        return (
-                            <FormSimilar similar_movie={similar_movie} key={index} index={index} onUpdateData={onUpdateData} onUpdateSimilarMovies={onUpdateSimilarMovies} />
-                        );
-                    })}
-                </div>
 
                 <input value="Ajouter" type="submit" className="submit btn btn-primary"></input>
             </form>
@@ -157,4 +119,4 @@ const FormModif = (props) => {
     );
 };
 
-export default FormModif;
+export default FormEdit;

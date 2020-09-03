@@ -4,6 +4,7 @@ import Movies from './components/Movies/Movies';
 import AddMovies from './components/AddMovies/AddMovies';
 import Details from './components/Details/Details';
 import axios from 'axios';
+import FormModif from './components/AddMovies/FormAjout';
 import './App.css';
 
 function App() {
@@ -35,10 +36,10 @@ function App() {
 								<Link className="nav-link" to="/">Liste de films<span className="sr-only">(current)</span></Link>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link" to="/add">Ajouter un film</Link>
+								<Link className="nav-link" to="/ajouter">Ajouter un film</Link>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link" to="/modify">Modifier un film</Link>
+								<Link className="nav-link" to="/modifier">Modifier un film</Link>
 							</li>
 						</ul>
 					</div>
@@ -46,8 +47,9 @@ function App() {
 
 				<main>
 					<Route exact path="/"><Movies movies={movies} setMovies={setMovies} /></Route>
-					<Route exact path="/add"><AddMovies /></Route>
+					<Route exact path="/ajouter"><AddMovies /></Route>
 					<Route exact path="/:id"><Details movies={movies}/></Route>
+					<Route exact path="/modifier"><FormModif movies={movies}/></Route>
 				</main>
 			</div>
 		</Router>
