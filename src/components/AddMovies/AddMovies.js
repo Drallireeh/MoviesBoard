@@ -5,7 +5,7 @@ import FormAjout from './FormAjout';
 import './AddMovies.css';
 import axios from 'axios';
 
-const AddMovies = () => {
+const AddMovies = (props) => {
     const base_url = "https://api.themoviedb.org/3/search/movie?";
 
     const [title, setTitle] = useState(null);
@@ -59,7 +59,7 @@ const AddMovies = () => {
         <section className="add-movie-cnt col-md-12">
             {!isMovieToAdd && <SearchMovie startSearch={startSearch} handleChangeTitle={handleChangeTitle} handleChangeDate={handleChangeDate} />}
 
-            {movieToAdd !== null && isMovieToAdd ? <FormAjout movie={movieToAdd} /> : <MoviesResult moviesSearch={moviesSearch} AddMovie={AddMovie} />}
+            {movieToAdd !== null && isMovieToAdd ? <FormAjout movie={movieToAdd} movies={props.movies} setMovies={props.setMovies} /> : <MoviesResult moviesSearch={moviesSearch} AddMovie={AddMovie} />}
         </section>
     );
 };

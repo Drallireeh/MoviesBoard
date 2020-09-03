@@ -8,6 +8,8 @@ const FormAjout = (props) => {
         // console.log(props.formValues)
         axios.post("http://localhost:3000/movies", datas).then(res => {
             console.log(res);
+            let new_movies = props.movies.concat(datas);
+            props.setMovies(new_movies);
         }).catch(err => alert(err))
     }
 

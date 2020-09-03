@@ -34,7 +34,6 @@ const FormMovie = (props) => {
 
     useEffect(() => {
         if (movieInfo) {
-            console.log("MOVIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE : ", movieInfo)
             let actors = [];
             movieInfo.actors.map(actor => {
                 actors.push({
@@ -51,7 +50,6 @@ const FormMovie = (props) => {
                     release_date: movie.release_date
                 })
             })
-            console.log(movieInfo)
             let datas = {
                 title: movieInfo.title,
                 poster: `${movieInfo.poster_path !== undefined ? "http://image.tmdb.org/t/p/w185" + movieInfo.poster_path : movieInfo.poster}`,

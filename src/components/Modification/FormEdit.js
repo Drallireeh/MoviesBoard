@@ -6,6 +6,7 @@ import axios from 'axios';
 const FormEdit = (props) => {
     let id = useParams();
     console.log("Jsuis la props : ", props)
+    
     let movie = props.movies.filter(movie => movie.id === Number(id.id))[0];
 
     const onSubmit = (event, datas) => {
@@ -17,7 +18,7 @@ const FormEdit = (props) => {
                 return el.id === movie.id ? el = datas : el;
             });
             props.setMovies(movies);
-            
+
         }).catch(err => alert(err))
     }
 

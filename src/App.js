@@ -44,7 +44,7 @@ function App() {
 
 				<main>
 					<Route exact path="/"><Movies movies={movies} setMovies={setMovies} /></Route>
-					<Route exact path="/ajouter"><AddMovies setMovies={setMovies}/></Route>
+					<Route exact path="/ajouter"><AddMovies movies={movies} setMovies={setMovies}/></Route>
 					<Route exact path="/:id"><Details movies={movies}/></Route>
 					<Route exact path="/:id/modifier"><FormEdit movies={movies} setMovies={setMovies}/></Route>
 				</main>
