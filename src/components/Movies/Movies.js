@@ -16,11 +16,13 @@ const Movies = (props) => {
     return (
         <section className="list-movies">
             <h1>Ma bibliothèque de films :</h1>
-            {props.movies.length > 0 ? props.movies.map(function (movie, index) {
-                return (
-                    <Movie movie={movie} key={index} deleteMovie={deleteMovie} />
-                )
-            }) : <h2>Notre bibliothèque est vide</h2>}
+            <div>
+                {props.movies.length > 0 ? props.movies.map(function (movie, index) {
+                    return (
+                        <Movie movie={movie} key={index} deleteMovie={deleteMovie} />
+                    )
+                }) : <h2>Notre bibliothèque est vide</h2>}
+            </div>
         </section>
     );
 };

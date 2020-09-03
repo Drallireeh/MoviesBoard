@@ -1,19 +1,45 @@
-.list-movies > h1{
+.list-movies > div {
+    display: flex;
+    flex-wrap: wrap;
     text-align: center;
+    justify-content: space-around;
+}
+
+.list-movies > h1 {
+    text-align: center;
+    color: white;
+    padding-top: 10px;
 }
 
 .movie-cnt {
     cursor: pointer;
+    margin-top: 40px;
+    padding: 5px 0px;
+    background-color: lightgray;
     display: flex;
-    justify-content: flex;
+    justify-content: space-between;
+    align-items: center;
     flex-direction: column;
-    color: black;
-    background-color: lightgrey;
+    width: 30%;
+    min-width: 310px;
+    height: 500px;
+    border-radius: 20px;
 }
 
 .movie-cnt .link-movie {
     display: contents;
     color: black;
+}
+
+.movie-cnt .link-movie .img-ctn {
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-cnt .link-movie .img-ctn img {
+    margin: auto;
 }
 
 .movie-cnt .link-movie:hover {
@@ -29,18 +55,30 @@
 }
 
 .movie-cnt .link-movie > img {
-    width: 50%;
+    width: 100%;
     margin: auto;
     margin-bottom: 5px;
 }
 
-.movie-cnt .link-movie > p,
-.movie-cnt .link-movie > span {
+.movie-cnt .link-movie > p {
     margin-bottom: 5px;
+    overflow: hidden;
+    height: auto;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    padding: 0px 10px;
+}
+
+
+.movie-cnt .link-movie > span {
+    margin-bottom: 5px; 
 }
 
 .movie-cnt > div:last-of-type {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding-bottom: 5px;
+    width: 100%;
 }
