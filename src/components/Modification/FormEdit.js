@@ -12,6 +12,12 @@ const FormEdit = (props) => {
         event.preventDefault();
         axios.put("http://localhost:3000/movies/" + movie.id, datas).then(res => {
             console.log(res);
+
+            let movies = props.movies.map(function (el) {
+                return el.id === movie.id ? el = datas : el;
+            });
+            props.setMovies(movies);
+            
         }).catch(err => alert(err))
     }
 

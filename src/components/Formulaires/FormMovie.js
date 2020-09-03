@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FormActor from './FormActors';
 import FormSimilar from './FormSilimar';
+import { Link, Redirect } from "react-router-dom";
 
 const FormMovie = (props) => {
     console.log("je suis dans la modif : ", props);
@@ -25,6 +26,8 @@ const FormMovie = (props) => {
 
     const [hasNewActor, setHasNewActor] = useState(false);
     const [hasFormValues, setHasFormValues] = useState(false);
+
+    const [redirectTo, setRedirectTo] = useState('');
 
     console.log("add movie final form : ", props)
     const movieInfo = props.movie;
@@ -110,9 +113,12 @@ const FormMovie = (props) => {
 
     return (
         <section className="add-movie-cnt">
+            {redirectTo.length > 0 ? <Redirect to={redirectTo}></Redirect> : ""}
             {hasFormValues &&
                 <form onSubmit={(e) => {
-                    props.onSubmit(e, formValues)}}>
+                    props.onSubmit(e, formValues)
+                    setRedirectTo("/");
+                }}>
 
                     <label htmlFor="title">Titre</label>
                     <input required type="text" name="title" id="title" onChange={onUpdateData} defaultValue={formValues.title} placeholder="Titre du film" />
