@@ -20,7 +20,7 @@ const Movies = (props) => {
                 return (
                     <Movie movie={movie} key={index} deleteMovie={deleteMovie} />
                 )
-            }) : <div>rien</div>}
+            }) : <h2>Notre bibliothèque est vide</h2>}
         </section>
     );
 };

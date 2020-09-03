@@ -5,6 +5,11 @@
     align-items: center;
 }
 
+.add-movie-cnt {
+    color: white;
+}
+
+
 .add-movie-cnt form {
     display: flex;
     flex-direction: column;
