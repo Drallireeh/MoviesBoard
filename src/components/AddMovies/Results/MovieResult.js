@@ -1,5 +1,5 @@
 import React from 'react';
-import './AddMovies.css';
+import '../AddMovies.css';
 
 const MovieResult = (props) => {
     console.log("props last : ", props)

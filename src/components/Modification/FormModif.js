@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './AddMovies.css';
 import FormActor from './FormActors';
 import FormSimilar from './FormSilimar';
 import axios from 'axios';
 
-const AddMovieFinalForm = (props) => {
+const FormModif = (props) => {
     const [formValues, setFormValues] = useState({
         title: "",
         poster_path: "",
@@ -158,4 +157,4 @@ const AddMovieFinalForm = (props) => {
     );
 };
 
-export default AddMovieFinalForm;
+export default FormModif;

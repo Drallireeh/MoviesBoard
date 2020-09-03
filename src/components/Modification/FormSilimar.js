@@ -1,5 +1,4 @@
 import React from 'react';
-import './AddMovies.css';
 
 const FormSimilar = (props) => {
 
