@@ -132,7 +132,7 @@ const FormMovie = (props) => {
 
         let newMovieInfos = { ...props.movie };
         newMovieInfos.similar_movies.push({ title: "", poster: "", release_date: "" });
-        
+
         console.log(newMovieInfos.similar_movies)
         props.setMovieToAdd(newMovieInfos);
     }
@@ -155,26 +155,38 @@ const FormMovie = (props) => {
                     setRedirectTo("/");
                 }}>
 
-                    <label htmlFor="title">Titre</label>
-                    <input required className="form-control" type="text" name="title" id="title" onChange={onUpdateData} defaultValue={formValues.title} placeholder="Titre du film" />
+                    <div className="form-row">
+                        <div className="col">
+                            <label htmlFor="title">Titre</label>
+                            <input required className="form-control" type="text" name="title" id="title" onChange={onUpdateData} defaultValue={formValues.title} placeholder="Titre du film" />
+                        </div>
+                        <div className="col">
+                            <label htmlFor="date">Date de sortie</label>
+                            <input required type="date" className="form-control" name="release_date" id="date" onChange={onUpdateData} defaultValue={formValues.release_date} placeholder="Date au format jj-mm-aaaa" />
+                        </div>
+                    </div>
 
-                    <label htmlFor="poster">Affiche du film</label>
-                    <input type="url" className="form-control"  name="poster" id="poster" onChange={onUpdateData} pattern="https?://.+" defaultValue={formValues.poster} placeholder="format : http:// ou https://" />
-
-                    <label htmlFor="categories">Catégories</label>
-                    <input required type="text" className="form-control"  name="categories" id="categories" onChange={onUpdateCategories} defaultValue={formValues.categories.join(", ")} placeholder="Séparer les catégories par des ','" />
-
-                    <label htmlFor="date">Date de sortie</label>
-                    <input required type="date" className="form-control"  name="release_date" id="date" onChange={onUpdateData} defaultValue={formValues.release_date} placeholder="Date au format jj-mm-aaaa" />
+                    <div className="form-row">
+                        <div className="col">
+                            <label htmlFor="poster">Affiche du film</label>
+                            <input type="url" className="form-control" name="poster" id="poster" onChange={onUpdateData} pattern="https?://.+" defaultValue={formValues.poster} placeholder="format : http:// ou https://" />
+                        </div>
+                        <div className="col">
+                            <label htmlFor="categories">Catégories</label>
+                            <input required type="text" className="form-control" name="categories" id="categories" onChange={onUpdateCategories} defaultValue={formValues.categories.join(", ")} placeholder="Séparer les catégories par des ','" />
+                        </div>
+                    </div>
 
                     <label htmlFor="description">Description</label>
-                    <textarea required type="text" className="form-control"  name="description" id="description" onChange={onUpdateData} defaultValue={formValues.description} placeholder="Description" />
+                    <textarea required type="text" className="form-control" name="description" id="description" onChange={onUpdateData} defaultValue={formValues.description} placeholder="Description" />
 
                     <div>
-                        <h3>Acteurs</h3>
+                        <h2>Acteurs</h2>
 
-                        <AddDatas onClick={AddActors} />
-                        <RemoveDatas onClick={removeActors} />
+                        <div className="btn-ctn">
+                            <AddDatas onClick={AddActors} />
+                            <RemoveDatas onClick={removeActors} />
+                        </div>
 
                         {movieInfo.actors.map(function (actor, index) {
                             return (
@@ -184,10 +196,12 @@ const FormMovie = (props) => {
                     </div>
 
                     <div>
-                        <h3>Films similaires</h3>
+                        <h2>Films similaires</h2>
 
-                        <AddDatas onClick={AddSimilarMovies} />
-                        <RemoveDatas onClick={removeSimilarMovies} />
+                        <div className="btn-ctn">
+                            <AddDatas onClick={AddSimilarMovies} />
+                            <RemoveDatas onClick={removeSimilarMovies} />
+                        </div>
 
                         {movieInfo.similar_movies.map(function (similar_movie, index) {
                             return (

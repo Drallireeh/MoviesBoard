@@ -7,6 +7,7 @@
 
 .add-movie-cnt {
     color: white;
+    padding: 10px;
 }
 
 .add-movie-cnt form {
@@ -17,9 +18,37 @@
     color: white;
 }
 
+.add-movie-cnt form > div {
+    padding-top: 10px;
+}
+
 .add-movie-cnt form .submit {
     margin-top: 10px;
     width: 250px;
+}
+
+.add-movie-cnt form > label {
+    padding-top: 10px;
+} 
+
+.add-movie-cnt form label {
+    font-weight: bold;
+} 
+
+.add-movie-cnt form h2 {
+    padding-bottom: 10px;
+}
+
+.add-movie-cnt form .btn-ctn {
+    padding: 10px 0px;
+}
+
+.add-movie-cnt form .btn-ctn > .btn {
+    width: 100px;
+}
+
+.add-movie-cnt form .btn-ctn > .btn:first-of-type {
+    margin-right: 15px;
 }
 
 .add-movie-cnt .list-movies {
