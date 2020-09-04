@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 import NoImage from "../../img/no-image.png"
 
+import ModifyButton from "./Buttons/ModifyButton";
+import DeleteButton from "./Buttons/DeleteButton";
+
 import './Movies.css';
 
 const Movie = (props) => {
@@ -21,8 +24,8 @@ const Movie = (props) => {
                 <span>Sorti le {movie.release_date}</span>
             </Link>
             <div>
-                <Link className="btn btn-success" to={"/" + movie.id + "/modifier"}>Modifier</Link>
-                <button className="btn btn-danger" onClick={(e) => props.openModal(movie)}>Supprimer</button>
+                <ModifyButton movie={movie}/>
+                <DeleteButton movie={movie} openModal={props.openModal}/>
             </div>
         </div>
     );

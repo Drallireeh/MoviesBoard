@@ -47,8 +47,9 @@
     text-decoration: none;
 }
 
-.movie-cnt .link-movie > * {
+.movie-cnt .link-movie > *:not(.img-ctn) {
     text-align: center;
+    width: 100%;
 }
 
 .movie-cnt .link-movie > h2 {
