@@ -1,16 +1,18 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import Actors from "./Actors/Actors"
 import "./Details.css"
+import SimilarMovies from './FilmsSimilaires/SimilarMovies';
 
 const Details = (props) => {
     let id = useParams();
     console.log("proppppps : ", props)
     let movie = props.movies.filter(movie => movie.id === Number(id.id))[0];
 
-    console.log(movie);
+    console.log("movie in details : ", movie);
     return (
         <section className="details-section">
-            {movie !== undefined &&
+            {movie !== undefined ?
                 <div>
                     <div>
                         <img src={movie.poster} />
@@ -22,11 +24,13 @@ const Details = (props) => {
                     <div>
                        <img src={movie.backdrop} />
                     </div>
+                    <Actors actors={movie.actors}/>
+                    <SimilarMovies similar_movies={movie.similar_movies}/>
                 </div>
-                // :
-                // <section className="detailedErrorCtnr">
-                //     <h1 className="detailedError">Ce film n'est pas dans votre bibliothèque</h1>
-                // </section>
+                :
+                <section>
+                    <h1>Ce film n'est pas dans votre bibliothèque</h1>
+                </section>
             }
         </section>
     )
