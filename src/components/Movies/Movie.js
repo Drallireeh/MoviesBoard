@@ -13,7 +13,7 @@ const Movie = (props) => {
 
     return (
         <div className="movie-cnt" to={"/" + movie.id}>
-            <Link className="link-movie" to={"/" + movie.id}>
+            <Link className="link-movie" to={"/movie/" + movie.id}>
                 <h2>{movie.title}</h2>
                 <div className="img-ctn">
                     <img onError={(e) => {

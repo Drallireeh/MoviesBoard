@@ -13,7 +13,7 @@ const FormAjout = (props) => {
     }
 
     return (
-        <FormMovie movie={props.movie} onSubmit={onSubmit}/>
+        <FormMovie movie={props.movie} onSubmit={onSubmit} setMovieToAdd={props.setMovieToAdd}/>
     );
 };
 

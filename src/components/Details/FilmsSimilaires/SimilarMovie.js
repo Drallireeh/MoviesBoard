@@ -8,7 +8,7 @@ const SimilarMovie = (props) => {
     let photo_url = movie.poster ? movie.poster : NoImage;
 
     return (
-        <div>
+        <div className="details-card">
             <h3>{movie.title}</h3>
             <div>
                 <img src={photo_url}></img>

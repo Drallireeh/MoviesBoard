@@ -6,13 +6,15 @@ const Actors = (props) => {
     console.log("actors props : ", props)
 
     return (
-        <div>
-            <h3>Acteurs</h3>
-            {actors.length > 0 ? actors.map(function (actor, index) {
-                return (
-                    <Actor actor={actor} key={index} />
-                )
-            }) : <h2>Pas d'acteur connus pour ce film</h2>}
+        <div className="actors-ctn">
+            <h4>Acteurs</h4>
+            <div className="details-card-list">
+                {actors.length > 0 ? actors.map(function (actor, index) {
+                    return (
+                        <Actor actor={actor} key={index} />
+                    )
+                }) : <h2>Pas d'acteur connus pour ce film</h2>}
+            </div>
         </div>
     )
 }

@@ -7,6 +7,8 @@ import ModifyButton from "../Movies/Buttons/ModifyButton";
 import DeleteButton from "../Movies/Buttons/DeleteButton";
 import ModalSuppression from "../Movies/Validation/ModalSuppression";
 
+import noImage from "../../img/no-image.png";
+
 import "./Details.css"
 
 const Details = (props) => {
@@ -27,7 +29,7 @@ const Details = (props) => {
                     <h3>{movie.categories.join(' / ')}</h3>
                     <p>{movie.description}</p>
                     <div>
-                        <img src={movie.backdrop} />
+                        <img src={movie.backdrop === "http://image.tmdb.org/t/p/w185null" ? noImage : movie.backdrop} alt="poster du film"/>
                     </div>
                     <Actors actors={movie.actors} />
                     <SimilarMovies similar_movies={movie.similar_movies} />

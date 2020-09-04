@@ -59,7 +59,7 @@ const AddMovies = (props) => {
         <section className="add-movie-cnt col-md-12">
             {!isMovieToAdd && <SearchMovie startSearch={startSearch} handleChangeTitle={handleChangeTitle} handleChangeDate={handleChangeDate} />}
 
-            {movieToAdd !== null && isMovieToAdd ? <FormAjout movie={movieToAdd} movies={props.movies} setMovies={props.setMovies} /> : <MoviesResult moviesSearch={moviesSearch} AddMovie={AddMovie} />}
+            {movieToAdd !== null && isMovieToAdd ? <FormAjout movie={movieToAdd} movies={props.movies} setMovies={props.setMovies} setMovieToAdd={setMovieToAdd} /> : <MoviesResult moviesSearch={moviesSearch} AddMovie={AddMovie} />}
         </section>
     );
 };

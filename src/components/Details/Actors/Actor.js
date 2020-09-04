@@ -8,12 +8,12 @@ const Actor = (props) => {
     let photo_url = actor.photo ? actor.photo : NoImage;
 
     return (
-        <div>
-            <h3>{actor.name}</h3>
+        <div className="details-card">
+            <h4>{actor.name}</h4>
             <div>
                 <img src={photo_url}></img>
             </div>
-            <p>Nom du personnage : {actor.character}</p>
+            <p>Personnage : {actor.character}</p>
         </div>
     )
 }

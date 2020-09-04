@@ -30,7 +30,6 @@ function App() {
     }
 
 	function openModal(movie) {
-		console.log("HEYYY")
 		setMovieToDelete(movie);
 		setIsOpen(true);
 	}
@@ -75,8 +74,8 @@ function App() {
 				<main>
 					<Route exact path="/"><Movies movies={movies} setMovies={setMovies} modalIsOpen={modalIsOpen} openModal={openModal} deleteMovie={deleteMovie} closeModal={closeModal}/></Route>
 					<Route exact path="/ajouter"><AddMovies movies={movies} setMovies={setMovies} /></Route>
-					<Route exact path="/:id"><Details movies={movies} modalIsOpen={modalIsOpen} deleteMovie={deleteMovie} closeModal={closeModal} openModal={openModal}/></Route>
-					<Route exact path="/:id/modifier"><FormEdit movies={movies} setMovies={setMovies} /></Route>
+					<Route exact path="/movie/:id"><Details movies={movies} modalIsOpen={modalIsOpen} deleteMovie={deleteMovie} closeModal={closeModal} openModal={openModal}/></Route>
+					<Route exact path="/movie/modifier/:id"><FormEdit movies={movies} setMovies={setMovies} /></Route>
 				</main>
 			</div>
 		</Router>

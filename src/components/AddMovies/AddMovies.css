@@ -30,8 +30,9 @@
 }
 
 .add-movie-cnt .list-movies > .movie-result-cnt {
-    margin-bottom: 10px;
-    background-color: #0f4c75;
+    margin-top: 40px;
+    background-color: lightgrey;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;

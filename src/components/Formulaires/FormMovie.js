@@ -24,7 +24,6 @@ const FormMovie = (props) => {
         }]
     });
 
-    const [hasNewActor, setHasNewActor] = useState(false);
     const [hasFormValues, setHasFormValues] = useState(false);
 
     const [redirectTo, setRedirectTo] = useState('');
@@ -136,16 +135,26 @@ const FormMovie = (props) => {
                     <div>
                         <h3>Acteurs</h3>
                         <button className="btn btn-primary" onClick={(e) => {
-                            e.preventDefault()
-                            setHasNewActor(true);
+                            e.preventDefault();
+
+                            let newMovieInfos = {...movieInfo}
+                            newMovieInfos.actors.push({name: "", photo: "", character: ""});
+
+                            props.setMovieToAdd(newMovieInfos);
+                            
+                            console.log("TEST CLICK : ", movieInfo)
+                            console.log(movieInfo.actors)
                         }}>Ajouter un acteur</button>
+                        {/* <button className="btn btn-danger" onClick={(e) => {
+                            e.preventDefault()
+                        }}>Supprimer un acteur</button> */}
 
                         {movieInfo.actors.map(function (actor, index) {
+                            console.log("je suis dans la map : ", index)
                             return (
                                 <FormActor actor={actor} key={index} index={index} onUpdateActors={onUpdateActors} />
                             );
                         })}
-                        {/* {hasNewActor ? <FormActor actor={""} key={props.actors.length} index={props.actors.length} onUpdateActors={onUpdateActors} /> : ""} */}
                     </div>
 
                     <div>
