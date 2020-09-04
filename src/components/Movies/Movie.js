@@ -1,7 +1,11 @@
 import React from 'react';
-import './Movies.css';
 import { Link } from "react-router-dom";
+
 import NoImage from "../../img/no-image.png"
+
+import ModalSuppression from './Validation/ModalSuppression';
+
+import './Movies.css';
 
 const Movie = (props) => {
     const movie = props.movie;
@@ -12,7 +16,6 @@ const Movie = (props) => {
                 <h2>{movie.title}</h2>
                 <div className="img-ctn">
                     <img onError={(e) => {
-                        console.log("test")
                         e.target.src = NoImage;
                     }} src={movie.poster !== "" ? movie.poster : ""} />
                 </div>
@@ -21,8 +24,9 @@ const Movie = (props) => {
             </Link>
             <div>
                 <Link className="btn btn-success" to={"/" + movie.id + "/modifier"}>Modifier</Link>
-                <button className="btn btn-danger" onClick={(e) => props.deleteMovie(movie)}>Supprimer</button>
+                <button className="btn btn-danger" onClick={(e) => props.openModal()}>Supprimer</button>
             </div>
+			<ModalSuppression movie={movie} modalIsOpen={props.modalIsOpen} openModal={props.openModal} deleteMovie={props.deleteMovie} closeModal={props.closeModal}/>
         </div>
     );
 };

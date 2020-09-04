@@ -1,14 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Modal from 'react-modal';
+import axios from 'axios';
+
 import Movies from './components/Movies/Movies';
 import Details from './components/Details/Details';
 import AddMovies from './components/AddMovies/AddMovies';
 import FormEdit from './components/Modification/FormEdit';
-import axios from 'axios';
+
 import './App.css';
+
+Modal.setAppElement('#root')
 
 function App() {
 	const [movies, setMovies] = useState([]);
+
+	const [modalIsOpen, setIsOpen] = useState(false);
+
+	const deleteMovie = (movie) => {
+		console.log("delete movie : ", movie);
+        axios.delete("http://localhost:3000/movies/" + movie.id).then(res => {
+			console.log(res);
+            const movies_to_keep = movies.filter(el => el.id !== movie.id)
+			setMovies(movies_to_keep);
+			closeModal();
+        }).catch(err => alert(err));
+    }
+
+	function openModal() {
+		setIsOpen(true);
+		console.log("Open modal")
+	}
+
+	function closeModal() {
+		setIsOpen(false);
+		console.log("closeee")
+	}
 
 	useEffect(() => {
 		axios.get(`http://localhost:3000/movies`)
@@ -43,10 +70,10 @@ function App() {
 				</nav>
 
 				<main>
-					<Route exact path="/"><Movies movies={movies} setMovies={setMovies} /></Route>
-					<Route exact path="/ajouter"><AddMovies movies={movies} setMovies={setMovies}/></Route>
-					<Route exact path="/:id"><Details movies={movies}/></Route>
-					<Route exact path="/:id/modifier"><FormEdit movies={movies} setMovies={setMovies}/></Route>
+					<Route exact path="/"><Movies movies={movies} setMovies={setMovies} modalIsOpen={modalIsOpen} openModal={openModal} deleteMovie={deleteMovie} closeModal={closeModal}/></Route>
+					<Route exact path="/ajouter"><AddMovies movies={movies} setMovies={setMovies} /></Route>
+					<Route exact path="/:id"><Details movies={movies} /></Route>
+					<Route exact path="/:id/modifier"><FormEdit movies={movies} setMovies={setMovies} /></Route>
 				</main>
 			</div>
 		</Router>

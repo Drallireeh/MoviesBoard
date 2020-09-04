@@ -128,7 +128,7 @@ const FormMovie = (props) => {
                     <input required type="text" name="categories" id="categories" onChange={onUpdateCategories} defaultValue={formValues.categories.join(", ")} placeholder="Séparer les catégories par des ','" />
 
                     <label htmlFor="date">Date de sortie</label>
-                    <input required type="date" name="date" id="date" onChange={onUpdateData} defaultValue={formValues.release_date} placeholder="Date au format jj-mm-aaaa" />
+                    <input required type="date" name="release_date" id="date" onChange={onUpdateData} defaultValue={formValues.release_date} placeholder="Date au format jj-mm-aaaa" />
 
                     <label htmlFor="description">Description</label>
                     <textarea required type="text" name="description" id="description" onChange={onUpdateData} defaultValue={formValues.description} placeholder="Description" />
