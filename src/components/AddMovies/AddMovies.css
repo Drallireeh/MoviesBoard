@@ -31,7 +31,7 @@
 
 .add-movie-cnt .list-movies > .movie-result-cnt {
     margin-bottom: 10px;
-    background-color: lightgray;
+    background-color: #0f4c75;
     display: flex;
     justify-content: center;
     align-items: center;

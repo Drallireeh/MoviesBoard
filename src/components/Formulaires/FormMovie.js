@@ -122,7 +122,7 @@ const FormMovie = (props) => {
                     <input required type="text" name="title" id="title" onChange={onUpdateData} defaultValue={formValues.title} placeholder="Titre du film" />
 
                     <label htmlFor="poster">Affiche du film</label>
-                    <input required type="url" name="poster" id="poster" onChange={onUpdateData} pattern="https?://.+" defaultValue={formValues.poster} placeholder="format : http:// ou https://" />
+                    <input type="url" name="poster" id="poster" onChange={onUpdateData} pattern="https?://.+" defaultValue={formValues.poster} placeholder="format : http:// ou https://" />
 
                     <label htmlFor="categories">Catégories</label>
                     <input required type="text" name="categories" id="categories" onChange={onUpdateCategories} defaultValue={formValues.categories.join(", ")} placeholder="Séparer les catégories par des ','" />

@@ -40,6 +40,7 @@
 
 .movie-cnt .link-movie .img-ctn img {
     margin: auto;
+    width: 100%;
 }
 
 .movie-cnt .link-movie:hover {

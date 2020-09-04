@@ -1,6 +1,7 @@
 import React from 'react';
 import './Movies.css';
 import { Link } from "react-router-dom";
+import NoImage from "../../img/no-image.png"
 
 const Movie = (props) => {
     const movie = props.movie;
@@ -10,7 +11,10 @@ const Movie = (props) => {
             <Link className="link-movie" to={"/" + movie.id}>
                 <h2>{movie.title}</h2>
                 <div className="img-ctn">
-                    <img src={movie.poster} />
+                    <img onError={(e) => {
+                        console.log("test")
+                        e.target.src = NoImage;
+                    }} src={movie.poster !== "" ? movie.poster : ""} />
                 </div>
                 <p>{movie.description}</p>
                 <span>Sorti le {movie.release_date}</span>
