@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import NoImage from "../../img/no-image.png"
 
-import ModalSuppression from './Validation/ModalSuppression';
-
 import './Movies.css';
 
 const Movie = (props) => {
@@ -24,9 +22,8 @@ const Movie = (props) => {
             </Link>
             <div>
                 <Link className="btn btn-success" to={"/" + movie.id + "/modifier"}>Modifier</Link>
-                <button className="btn btn-danger" onClick={(e) => props.openModal()}>Supprimer</button>
+                <button className="btn btn-danger" onClick={(e) => props.openModal(movie)}>Supprimer</button>
             </div>
-			<ModalSuppression movie={movie} modalIsOpen={props.modalIsOpen} openModal={props.openModal} deleteMovie={props.deleteMovie} closeModal={props.closeModal}/>
         </div>
     );
 };

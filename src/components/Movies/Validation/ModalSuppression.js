@@ -24,7 +24,7 @@ function ModalSuppression(props) {
             style={customStyles}
         >
             <p>Êtes vous sûrs de vouloir supprimer ce film ?</p>
-            <button onClick={(e) => props.deleteMovie(props.movie)}>Oui</button>
+            <button onClick={props.deleteMovie}>Oui</button>
             <button onClick={props.closeModal}>Non</button>
         </Modal>
     );

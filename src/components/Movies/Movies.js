@@ -1,7 +1,6 @@
 import React from 'react';
 import Movie from './Movie';
 import ModalSuppression from "./Validation/ModalSuppression"
-import axios from 'axios';
 import './Movies.css';
 
 const Movies = (props) => {
@@ -13,10 +12,11 @@ const Movies = (props) => {
             <div>
                 {props.movies.length > 0 ? props.movies.map(function (movie, index) {
                     return (
-                        <Movie movie={movie} key={index} modalIsOpen={props.modalIsOpen} openModal={props.openModal} deleteMovie={props.deleteMovie} closeModal={props.closeModal} />
+                        <Movie movie={movie} key={index} openModal={props.openModal}/>
                     )
                 }) : <h2>Notre bibliothèque est vide</h2>}
             </div>
+			<ModalSuppression modalIsOpen={props.modalIsOpen} deleteMovie={props.deleteMovie} closeModal={props.closeModal}/>
         </section>
     );
 };

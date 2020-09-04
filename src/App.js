@@ -17,24 +17,26 @@ function App() {
 
 	const [modalIsOpen, setIsOpen] = useState(false);
 
-	const deleteMovie = (movie) => {
-		console.log("delete movie : ", movie);
-        axios.delete("http://localhost:3000/movies/" + movie.id).then(res => {
+	const [movieToDelete, setMovieToDelete] = useState(null);
+
+	const deleteMovie = () => {
+		console.log("delete movie : ", movieToDelete);
+        axios.delete("http://localhost:3000/movies/" + movieToDelete.id).then(res => {
 			console.log(res);
-            const movies_to_keep = movies.filter(el => el.id !== movie.id)
+            const movies_to_keep = movies.filter(el => el.id !== movieToDelete.id)
 			setMovies(movies_to_keep);
 			closeModal();
         }).catch(err => alert(err));
     }
 
-	function openModal() {
+	function openModal(movie) {
+		setMovieToDelete(movie);
 		setIsOpen(true);
-		console.log("Open modal")
 	}
 
 	function closeModal() {
 		setIsOpen(false);
-		console.log("closeee")
+		setMovieToDelete(null);
 	}
 
 	useEffect(() => {
