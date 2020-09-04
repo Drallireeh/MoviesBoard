@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from "react-router-dom";
+
 import FormActor from './FormActors';
 import FormSimilar from './FormSilimar';
-import { Link, Redirect } from "react-router-dom";
+import AddDatas from "./Buttons/AddDatas";
+import RemoveDatas from "./Buttons/RemoveDatas";
 
 const FormMovie = (props) => {
     console.log("je suis dans la modif : ", props);
@@ -108,6 +111,41 @@ const FormMovie = (props) => {
         setFormValues(data);
     }
 
+    const AddActors = (e) => {
+        e.preventDefault();
+
+        let newMovieInfos = { ...movieInfo }
+        newMovieInfos.actors.push({ name: "", photo: "", character: "" });
+
+        props.setMovieToAdd(newMovieInfos);
+    }
+    const removeActors = (e) => {
+        e.preventDefault();
+
+        let newMovieInfos = { ...movieInfo }
+        newMovieInfos.actors.pop();
+
+        props.setMovieToAdd(newMovieInfos);
+    }
+    const AddSimilarMovies = (e) => {
+        e.preventDefault();
+
+        let newMovieInfos = { ...props.movie };
+        newMovieInfos.similar_movies.push({ title: "", poster: "", release_date: "" });
+        
+        console.log(newMovieInfos.similar_movies)
+        props.setMovieToAdd(newMovieInfos);
+    }
+    const removeSimilarMovies = (e) => {
+        e.preventDefault();
+
+        let newMovieInfos = { ...movieInfo }
+        newMovieInfos.similar_movies.pop();
+
+        props.setMovieToAdd(newMovieInfos);
+    }
+
+
     return (
         <section className="add-movie-cnt">
             {redirectTo.length > 0 ? <Redirect to={redirectTo}></Redirect> : ""}
@@ -118,39 +156,27 @@ const FormMovie = (props) => {
                 }}>
 
                     <label htmlFor="title">Titre</label>
-                    <input required type="text" name="title" id="title" onChange={onUpdateData} defaultValue={formValues.title} placeholder="Titre du film" />
+                    <input required className="form-control" type="text" name="title" id="title" onChange={onUpdateData} defaultValue={formValues.title} placeholder="Titre du film" />
 
                     <label htmlFor="poster">Affiche du film</label>
-                    <input type="url" name="poster" id="poster" onChange={onUpdateData} pattern="https?://.+" defaultValue={formValues.poster} placeholder="format : http:// ou https://" />
+                    <input type="url" className="form-control"  name="poster" id="poster" onChange={onUpdateData} pattern="https?://.+" defaultValue={formValues.poster} placeholder="format : http:// ou https://" />
 
                     <label htmlFor="categories">Catégories</label>
-                    <input required type="text" name="categories" id="categories" onChange={onUpdateCategories} defaultValue={formValues.categories.join(", ")} placeholder="Séparer les catégories par des ','" />
+                    <input required type="text" className="form-control"  name="categories" id="categories" onChange={onUpdateCategories} defaultValue={formValues.categories.join(", ")} placeholder="Séparer les catégories par des ','" />
 
                     <label htmlFor="date">Date de sortie</label>
-                    <input required type="date" name="release_date" id="date" onChange={onUpdateData} defaultValue={formValues.release_date} placeholder="Date au format jj-mm-aaaa" />
+                    <input required type="date" className="form-control"  name="release_date" id="date" onChange={onUpdateData} defaultValue={formValues.release_date} placeholder="Date au format jj-mm-aaaa" />
 
                     <label htmlFor="description">Description</label>
-                    <textarea required type="text" name="description" id="description" onChange={onUpdateData} defaultValue={formValues.description} placeholder="Description" />
+                    <textarea required type="text" className="form-control"  name="description" id="description" onChange={onUpdateData} defaultValue={formValues.description} placeholder="Description" />
 
                     <div>
                         <h3>Acteurs</h3>
-                        <button className="btn btn-primary" onClick={(e) => {
-                            e.preventDefault();
 
-                            let newMovieInfos = {...movieInfo}
-                            newMovieInfos.actors.push({name: "", photo: "", character: ""});
-
-                            props.setMovieToAdd(newMovieInfos);
-                            
-                            console.log("TEST CLICK : ", movieInfo)
-                            console.log(movieInfo.actors)
-                        }}>Ajouter un acteur</button>
-                        {/* <button className="btn btn-danger" onClick={(e) => {
-                            e.preventDefault()
-                        }}>Supprimer un acteur</button> */}
+                        <AddDatas onClick={AddActors} />
+                        <RemoveDatas onClick={removeActors} />
 
                         {movieInfo.actors.map(function (actor, index) {
-                            console.log("je suis dans la map : ", index)
                             return (
                                 <FormActor actor={actor} key={index} index={index} onUpdateActors={onUpdateActors} />
                             );
@@ -159,9 +185,11 @@ const FormMovie = (props) => {
 
                     <div>
                         <h3>Films similaires</h3>
-                        <button className="btn btn-primary">Ajouter un film similaire</button>
 
-                        {formValues.similar_movies.map(function (similar_movie, index) {
+                        <AddDatas onClick={AddSimilarMovies} />
+                        <RemoveDatas onClick={removeSimilarMovies} />
+
+                        {movieInfo.similar_movies.map(function (similar_movie, index) {
                             return (
                                 <FormSimilar similar_movie={similar_movie} key={index} index={index} onUpdateData={onUpdateData} onUpdateSimilarMovies={onUpdateSimilarMovies} />
                             );
