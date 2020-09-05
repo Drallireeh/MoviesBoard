@@ -87,3 +87,11 @@
 
 /* Modal */
 
+.modal-bnt-ctn {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.modal-btn-ctn .btn {
+    width: 100px;
+}

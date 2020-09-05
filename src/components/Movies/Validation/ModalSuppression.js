@@ -14,7 +14,7 @@ function ModalSuppression(props) {
             bottom: 'auto',
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)'
-        }
+        },
     };
 
     return (
@@ -24,8 +24,10 @@ function ModalSuppression(props) {
             style={customStyles}
         >
             <p>Êtes vous sûrs de vouloir supprimer ce film ?</p>
-            <button className="btn btn-success" onClick={props.deleteMovie}>Oui</button>
-            <button className="btn btn-danger" onClick={props.closeModal}>Non</button>
+            <div className="modal-bnt-ctn">
+               <button className="btn btn-success" onClick={props.deleteMovie}>Oui</button>
+                <button className="btn btn-danger" onClick={props.closeModal}>Non</button>
+            </div>
         </Modal>
     );
 }
