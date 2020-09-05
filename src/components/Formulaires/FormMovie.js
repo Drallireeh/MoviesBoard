@@ -96,6 +96,7 @@ const FormMovie = (props) => {
         data["actors"].map(function (data, idx) {
             return idx === index ? data[name] = value : data;
         });
+        console.log("data : ", data["actors"])
         setFormValues(data);
     }
 
@@ -114,35 +115,39 @@ const FormMovie = (props) => {
     const AddActors = (e) => {
         e.preventDefault();
 
-        let newMovieInfos = { ...movieInfo }
+        let newMovieInfos = { ...formValues }
         newMovieInfos.actors.push({ name: "", photo: "", character: "" });
 
         props.setMovieToAdd(newMovieInfos);
+        setFormValues(newMovieInfos);
     }
     const removeActors = (e) => {
         e.preventDefault();
 
-        let newMovieInfos = { ...movieInfo }
+        let newMovieInfos = { ...formValues }
         newMovieInfos.actors.pop();
 
         props.setMovieToAdd(newMovieInfos);
+        setFormValues(newMovieInfos);
     }
     const AddSimilarMovies = (e) => {
         e.preventDefault();
 
-        let newMovieInfos = { ...props.movie };
+        let newMovieInfos = { ...formValues };
         newMovieInfos.similar_movies.push({ title: "", poster: "", release_date: "" });
 
         console.log(newMovieInfos.similar_movies)
         props.setMovieToAdd(newMovieInfos);
+        setFormValues(newMovieInfos);
     }
     const removeSimilarMovies = (e) => {
         e.preventDefault();
 
-        let newMovieInfos = { ...movieInfo }
+        let newMovieInfos = { ...formValues }
         newMovieInfos.similar_movies.pop();
 
         props.setMovieToAdd(newMovieInfos);
+        setFormValues(newMovieInfos);
     }
 
     return (

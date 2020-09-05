@@ -4,10 +4,9 @@ import FormMovie from '../Formulaires/FormMovie';
 import axios from 'axios';
 
 const FormEdit = (props) => {
-    let id = useParams();
     console.log("Jsuis la props : ", props)
     
-    let movie = props.movies.filter(movie => movie.id === Number(id.id))[0];
+    let movie = props.movie;
 
     const onSubmit = (event, datas) => {
         event.preventDefault();
@@ -24,7 +23,7 @@ const FormEdit = (props) => {
 
     return (
         <section>
-            {movie !== undefined ? <FormMovie movie={movie} onSubmit={onSubmit} /> :
+            {movie !== undefined ? <FormMovie movie={movie} onSubmit={onSubmit} setMovieToAdd={props.setMovieToAdd}/> :
                 <h1>Ce film n'existe pas dans votre base de données</h1>}
         </section>
     );

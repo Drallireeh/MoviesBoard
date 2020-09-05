@@ -6,7 +6,7 @@ import axios from 'axios';
 import Movies from './components/Movies/Movies';
 import Details from './components/Details/Details';
 import AddMovies from './components/AddMovies/AddMovies';
-import FormEdit from './components/Modification/FormEdit';
+import Edit from './components/Modification/Edit';
 
 import './App.css';
 
@@ -75,7 +75,7 @@ function App() {
 					<Route exact path="/"><Movies movies={movies} setMovies={setMovies} modalIsOpen={modalIsOpen} openModal={openModal} deleteMovie={deleteMovie} closeModal={closeModal}/></Route>
 					<Route exact path="/ajouter"><AddMovies movies={movies} setMovies={setMovies} /></Route>
 					<Route exact path="/movie/:id"><Details movies={movies} modalIsOpen={modalIsOpen} deleteMovie={deleteMovie} closeModal={closeModal} openModal={openModal}/></Route>
-					<Route exact path="/movie/modifier/:id"><FormEdit movies={movies} setMovies={setMovies} /></Route>
+					<Route exact path="/movie/modifier/:id"><Edit movies={movies} setMovies={setMovies} /></Route>
 				</main>
 			</div>
 		</Router>
