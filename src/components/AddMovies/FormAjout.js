@@ -5,7 +5,8 @@ import axios from 'axios';
 const FormAjout = (props) => {
     const onSubmit = (event, datas) => {
         event.preventDefault();
-        axios.post("http://localhost:3000/movies", datas).then(res => {
+            console.log("new movies : ", datas);
+            axios.post("http://localhost:3000/movies", datas).then(res => {
             let new_movies = props.movies.concat(res.data);
             console.log("new movies : ", new_movies);
             props.setMovies(new_movies);

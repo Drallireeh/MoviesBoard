@@ -14,7 +14,7 @@ const FormSimilar = (props) => {
 
             <div className="form-group col-md-4">
                 <label htmlFor={`poster-similar${index}`}>Affiche</label>
-                <input type="url" className="form-control" name="poster_path" id={`poster-similar${index}`} pattern="https?://.+" onChange={(event) => props.onUpdateSimilarMovies(event, index)} defaultValue={similar.poster_path != null ? url_photo + similar.poster_path : similar.poster} placeholder="Format http:// ou https://" />
+                <input type="url" className="form-control" name="poster" id={`poster-similar${index}`} pattern="https?://.+" onChange={(event) => props.onUpdateSimilarMovies(event, index)} defaultValue={similar.poster_path != null ? url_photo + similar.poster_path : similar.poster} placeholder="Format http:// ou https://" />
             </div>
 
             <div className="form-group col-md-4">

@@ -8,7 +8,7 @@ const AddMovies = (props) => {
     const [movieToAdd, setMovieToAdd] = useState(null);
 
     useEffect(() => {
-        let movie = props.movies.filter(movie => movie.id === Number(id.id))[0];
+        let movie = {...props.movies.filter(movie => movie.id === Number(id.id))[0]};
         setMovieToAdd(movie);
     }, [])
 
