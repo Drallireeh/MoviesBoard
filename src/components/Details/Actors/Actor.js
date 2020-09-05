@@ -11,7 +11,7 @@ const Actor = (props) => {
         <div className="details-card">
             <h4>{actor.name}</h4>
             <div>
-                <img src={photo_url}></img>
+                <img src={photo_url} alt={"photo de l'acteur "+ actor.name}></img>
             </div>
             <p>Personnage : {actor.character}</p>
         </div>

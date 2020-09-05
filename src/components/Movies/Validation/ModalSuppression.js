@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root')
@@ -24,8 +24,8 @@ function ModalSuppression(props) {
             style={customStyles}
         >
             <p>Êtes vous sûrs de vouloir supprimer ce film ?</p>
-            <button onClick={props.deleteMovie}>Oui</button>
-            <button onClick={props.closeModal}>Non</button>
+            <button className="btn btn-success" onClick={props.deleteMovie}>Oui</button>
+            <button className="btn btn-danger" onClick={props.closeModal}>Non</button>
         </Modal>
     );
 }

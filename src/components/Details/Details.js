@@ -22,14 +22,14 @@ const Details = (props) => {
             {movie !== undefined ?
                 <div>
                     <div>
-                        <img src={movie.poster} />
+                        <img src={movie.poster}  alt={"poster du film " + movie.title}/>
                     </div>
                     <h1>{movie.title}</h1>
                     <h2>{movie.release_date}</h2>
                     <h3>{movie.categories.join(' / ')}</h3>
                     <p>{movie.description}</p>
                     <div>
-                        <img src={movie.backdrop === "http://image.tmdb.org/t/p/w185null" ? noImage : movie.backdrop} alt="poster du film"/>
+                        <img src={movie.backdrop === "http://image.tmdb.org/t/p/w185null" ? noImage : movie.backdrop} alt={"affiche secondaire du film " + movie.title}/>
                     </div>
                     <Actors actors={movie.actors} />
                     <SimilarMovies similar_movies={movie.similar_movies} />

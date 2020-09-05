@@ -18,7 +18,7 @@ const Movie = (props) => {
                 <div className="img-ctn">
                     <img onError={(e) => {
                         e.target.src = NoImage;
-                    }} src={movie.poster !== "" ? movie.poster : ""} />
+                    }} src={movie.poster !== "" ? movie.poster : ""} alt={"affiche du film" + movie.title}/>
                 </div>
                 <p>{movie.description}</p>
                 <span>Sorti le {movie.release_date}</span>
