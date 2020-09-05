@@ -48,7 +48,7 @@ const FormMovie = (props) => {
             movieInfo.similar_movies.map(movie => {
                 similar_movies.push({
                     title: movie.title,
-                    poster: `http://image.tmdb.org/t/p/w185${movieInfo.poster_path !== undefined ? movieInfo.poster_path : movieInfo.poster}`,
+                    poster: `http://image.tmdb.org/t/p/w185${movie.poster_path !== undefined ? movie.poster_path : movie.poster}`,
                     release_date: movie.release_date
                 })
             })
@@ -108,6 +108,7 @@ const FormMovie = (props) => {
         data["similar_movies"].map(function (data, idx) {
             return idx === index ? data[name] = value : data;
         });
+        console.log("je suis la data de similar moie : ", data)
         setFormValues(data);
     }
 
@@ -144,7 +145,6 @@ const FormMovie = (props) => {
 
         props.setMovieToAdd(newMovieInfos);
     }
-
 
     return (
         <section className="add-movie-cnt">

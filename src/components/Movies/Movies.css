@@ -1,3 +1,7 @@
+.list-movies {
+    color: white;
+}
+
 .list-movies > div {
     display: flex;
     flex-wrap: wrap;
@@ -9,6 +13,14 @@
     text-align: center;
     color: white;
     padding-top: 10px;
+}
+                    
+.list-movies .no-film-found {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .movie-cnt {
