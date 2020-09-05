@@ -31,7 +31,6 @@ const FormMovie = (props) => {
 
     const [redirectTo, setRedirectTo] = useState('');
 
-    console.log("add movie final form : ", props);
     const movieInfo = props.movie;
 
     const base_url = "http://image.tmdb.org/t/p/w185";
@@ -41,18 +40,15 @@ const FormMovie = (props) => {
             let actors = [];
             movieInfo.actors.map(actor => {
                 let actor_photo = actor.profile_path !== undefined ? base_url + actor.profile_path : actor.photo;
-                console.log("actor photo : ", actor_photo)
                 actors.push({
                     name: actor.name,
                     photo: actor_photo,
                     character: actor.character
                 });
-                console.log(actors)
             });
             let similar_movies = [];
             movieInfo.similar_movies.map(movie => {
                 let movie_poster = movie.poster_path !== undefined ? base_url + movie.poster_path : movie.poster;
-                console.log(movie_poster)
                 similar_movies.push({
                     title: movie.title,
                     poster: movie_poster,
@@ -195,11 +191,11 @@ const FormMovie = (props) => {
                             <RemoveDatas onClick={removeActors} />
                         </div>
 
-                        {movieInfo.actors.map(function (actor, index) {
+                        {movieInfo.actors.length > 0 ? movieInfo.actors.map(function (actor, index) {
                             return (
                                 <FormActor actor={actor} key={index} index={index} onUpdateActors={onUpdateActors} />
                             );
-                        })}
+                        }) : <p>Pas d'acteurs connus</p>}
                     </div>
 
                     <div>
@@ -210,11 +206,11 @@ const FormMovie = (props) => {
                             <RemoveDatas onClick={removeSimilarMovies} />
                         </div>
 
-                        {movieInfo.similar_movies.map(function (similar_movie, index) {
+                        {movieInfo.similar_movies.length > 0 ? movieInfo.similar_movies.map(function (similar_movie, index) {
                             return (
                                 <FormSimilar similar_movie={similar_movie} key={index} index={index} onUpdateData={onUpdateData} onUpdateSimilarMovies={onUpdateSimilarMovies} />
                             );
-                        })}
+                        }) : <p>Pas de films similaires connus</p>}
                     </div>
 
                     <input value="Confirmer" type="submit" className="submit btn btn-success"></input>

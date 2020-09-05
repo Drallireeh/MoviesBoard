@@ -7,7 +7,6 @@ const FormAjout = (props) => {
         event.preventDefault();
         axios.post("http://localhost:3000/movies", datas).then(res => {
             let new_movies = props.movies.concat(res.data);
-            console.log("subMIT : ", res.data.similar_movies)
             props.setMovies(new_movies);
         }).catch(err => alert(err))
     }

@@ -3,8 +3,6 @@ import '../AddMovies.css';
 import noImage from "../../../img/no-image.png"
 
 const MovieResult = (props) => {
-    console.log("props last : ", props)
-
     const base_img_url = "http://image.tmdb.org/t/p/w185";
     const img_url = props.movie.poster_path !== "" && props.movie.poster_path !== null ? base_img_url + props.movie.poster_path : noImage;
 
