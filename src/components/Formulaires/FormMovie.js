@@ -31,27 +31,34 @@ const FormMovie = (props) => {
 
     const [redirectTo, setRedirectTo] = useState('');
 
-    console.log("add movie final form : ", props)
+    console.log("add movie final form : ", props);
     const movieInfo = props.movie;
+
+    const base_url = "http://image.tmdb.org/t/p/w185";
 
     useEffect(() => {
         if (movieInfo) {
             let actors = [];
             movieInfo.actors.map(actor => {
+                let actor_photo = actor.profile_path !== undefined ? base_url + actor.profile_path : actor.photo;
+                console.log("actor photo : ", actor_photo)
                 actors.push({
                     name: actor.name,
-                    photo: `http://image.tmdb.org/t/p/w185${actor.profile_path !== undefined ? actor.profile_path : actor.photo}`,
+                    photo: actor_photo,
                     character: actor.character
-                })
-            })
+                });
+                console.log(actors)
+            });
             let similar_movies = [];
             movieInfo.similar_movies.map(movie => {
+                let movie_poster = movie.poster_path !== undefined ? base_url + movie.poster_path : movie.poster;
+                console.log(movie_poster)
                 similar_movies.push({
                     title: movie.title,
-                    poster: `http://image.tmdb.org/t/p/w185${movie.poster_path !== undefined ? movie.poster_path : movie.poster}`,
+                    poster: movie_poster,
                     release_date: movie.release_date
-                })
-            })
+                });
+            });
             let datas = {
                 title: movieInfo.title,
                 poster: `${movieInfo.poster_path !== undefined ? "http://image.tmdb.org/t/p/w185" + movieInfo.poster_path : movieInfo.poster}`,
@@ -108,7 +115,7 @@ const FormMovie = (props) => {
         data["similar_movies"].map(function (data, idx) {
             return idx === index ? data[name] = value : data;
         });
-        console.log("je suis la data de similar moie : ", data)
+        console.log("je suis la data de similar moie : ", data);
         setFormValues(data);
     }
 

@@ -16,7 +16,7 @@ const FormActor = (props) => {
 
             <div className="form-group col-md-4 col-sm-12">
                 <label htmlFor={`photo${index}`}>Photo</label>
-                <input type="url" name="photo" id={`photo${index}`} className="form-control" onChange={(e) => props.onUpdateActors(e, index)} pattern="https?://.+" defaultValue={actor.profile_path !== null ? url_photo + actor.profile_path : ""} placeholder="Format http:// ou https://" />
+                <input type="url" name="photo" id={`photo${index}`} className="form-control" onChange={(e) => props.onUpdateActors(e, index)} pattern="https?://.+" defaultValue={actor.profile_path != null ? url_photo + actor.profile_path : actor.photo} placeholder="Format http:// ou https://" />
             </div>
             
             <div className="form-group col-md-4 col-sm-12">

@@ -15,7 +15,7 @@ const FormEdit = (props) => {
             console.log(res);
 
             let movies = props.movies.map(function (el) {
-                return el.id === movie.id ? el = datas : el;
+                return el.id === movie.id ? el = res.data : el;
             });
             props.setMovies(movies);
 
