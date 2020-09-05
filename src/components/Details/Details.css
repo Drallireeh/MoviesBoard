@@ -1,5 +1,5 @@
 .details-section {
-    color: #3282b8;
+    color: white;
     padding: 20px;
 }
 
@@ -22,6 +22,13 @@
 
 .details-section > div > div > img {
     width: 100%;
+}
+
+.details-section .details-btn-ctn {
+    display: flex;
+    justify-content: space-evenly;
+    width: 300px;
+    padding: 20px;
 }
 
 /* Actors / Similar movies */

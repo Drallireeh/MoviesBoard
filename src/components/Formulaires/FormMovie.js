@@ -26,13 +26,10 @@ const FormMovie = (props) => {
             character: ""
         }]
     });
-
     const [hasFormValues, setHasFormValues] = useState(false);
-
     const [redirectTo, setRedirectTo] = useState('');
 
     const movieInfo = props.movie;
-
     const base_url = "http://image.tmdb.org/t/p/w185";
 
     useEffect(() => {
@@ -111,7 +108,6 @@ const FormMovie = (props) => {
         data["similar_movies"].map(function (data, idx) {
             return idx === index ? data[name] = value : data;
         });
-        console.log("je suis la data de similar moie : ", data);
         setFormValues(data);
     }
 

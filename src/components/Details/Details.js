@@ -33,7 +33,7 @@ const Details = (props) => {
                     </div>
                     <Actors actors={movie.actors} />
                     <SimilarMovies similar_movies={movie.similar_movies} />
-                    <div>
+                    <div className="details-btn-ctn">
                         <ModifyButton movie={movie} />
                         <DeleteButton movie={movie} openModal={props.openModal} />
                     </div>
