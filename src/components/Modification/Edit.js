@@ -10,7 +10,7 @@ const AddMovies = (props) => {
     useEffect(() => {
         let movie = {...props.movies.filter(movie => movie.id === Number(id.id))[0]};
         setMovieToAdd(movie);
-    }, [])
+    }, []);
 
     return (
         <section className="add-movie-cnt col-md-12">

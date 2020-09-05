@@ -7,7 +7,7 @@ const Actors = (props) => {
 
     return (
         <div className="actors-ctn">
-            <h4>Acteurs</h4>
+            <h3>Acteurs</h3>
             <div className="details-card-list">
                 {actors.length > 0 ? actors.map(function (actor, index) {
                     return (

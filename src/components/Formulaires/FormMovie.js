@@ -54,8 +54,8 @@ const FormMovie = (props) => {
             });
             let datas = {
                 title: movieInfo.title,
-                poster: `${movieInfo.poster_path !== undefined ? "http://image.tmdb.org/t/p/w185" + movieInfo.poster_path : movieInfo.poster}`,
-                backdrop: `${movieInfo.backdrop_path !== undefined ? "http://image.tmdb.org/t/p/w185" + movieInfo.backdrop_path : movieInfo.backdrop}`,
+                poster: `${movieInfo.poster_path !== undefined ? base_url + movieInfo.poster_path : movieInfo.poster}`,
+                backdrop: `${movieInfo.backdrop_path !== undefined ? "http://image.tmdb.org/t/p/original" + movieInfo.backdrop_path : movieInfo.backdrop}`,
                 categories: movieInfo.categories,
                 release_date: movieInfo.release_date,
                 description: movieInfo.overview ? movieInfo.overview : movieInfo.description,

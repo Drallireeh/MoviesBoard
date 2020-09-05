@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import FormMovie from '../Formulaires/FormMovie';
 import axios from 'axios';
 
