@@ -6,7 +6,7 @@ import NoImage from "../../../img/no-image.png"
 
 const SimilarMovie = (props) => {
     let movie = props.movie;
-    let poster_url = movie.poster ? movie.poster : NoImage;
+    let photo_url = movie.poster === "http://image.tmdb.org/t/p/w185null" ? NoImage : movie.poster;
 
     return (
         <div className="details-card">
