@@ -5,7 +5,7 @@ const Actor = (props) => {
     console.log("proppppps : ", props)
     let actor = props.actor;
     console.log(props.actor)
-    let photo_url = actor.photo ? actor.photo : NoImage;
+    let photo_url = actor.photo === "http://image.tmdb.org/t/p/w185null" ? NoImage : actor.photo;
 
     return (
         <div className="details-card">

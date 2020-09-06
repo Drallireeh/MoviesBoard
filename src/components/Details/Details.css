@@ -7,7 +7,6 @@
     position: absolute;
     top: 50px;
     width: 100%;
-    /* max-height: 60%; */
     z-index: -1;
 }
 
@@ -69,7 +68,10 @@
     justify-content: space-between;
     flex-direction: column;
     height: 450px;
+}
 
+.details-card-list > .details-card img {
+    max-width: 185px;
 }
 
 .details-card-list > .details-card > h3 {
