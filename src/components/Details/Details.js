@@ -12,6 +12,7 @@ import noImage from "../../img/no-image.png";
 
 import "./Details.css"
 
+// Gestion de la page détails
 const Details = (props) => {
     let id = useParams();
     let movie = props.movies.filter(movie => movie.id === Number(id.id))[0];
@@ -20,7 +21,9 @@ const Details = (props) => {
         <section className="details-section">
             {movie !== undefined ?
                 <div>
+                    {/* Si il n'y a pas de backdrop, alors on ne l'affiche pas */}
                     {movie.backdrop !== "http://image.tmdb.org/t/p/originalnull" && <img className="backdrop" src={movie.backdrop} alt={"affiche secondaire du film " + movie.title} />}
+                    {/* Si il n'y a pas de backdrop, alors l'affichage de l'image change */}
                     <img className={movie.backdrop !== "http://image.tmdb.org/t/p/originalnull" ? "poster-img" : "poster-without-backdrop"} src={movie.poster === "http://image.tmdb.org/t/p/w185null" ? noImage : movie.poster} alt={"poster du film " + movie.title} />
                     <h1>{movie.title}</h1>
                     <h2><DateFormated date={movie.release_date} /></h2>
@@ -32,6 +35,7 @@ const Details = (props) => {
                         <ModifyButton movie={movie} />
                         <DeleteButton movie={movie} openModal={props.openModal} />
                     </div>
+                    {/* popup de suppression */}
                     <ModalSuppression modalIsOpen={props.modalIsOpen} deleteMovie={props.deleteMovie} closeModal={props.closeModal} />
                 </div>
                 :

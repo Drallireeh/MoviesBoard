@@ -1,6 +1,7 @@
 import React from 'react';
 import Actor from "./Actor";
 
+// Gestion de la liste des acteurs
 const Actors = (props) => {
     let actors = props.actors;
 

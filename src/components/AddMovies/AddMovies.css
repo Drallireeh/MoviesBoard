@@ -1,14 +1,9 @@
-.flex-column-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .add-movie-cnt {
     color: white;
     padding: 10px;
 }
+
+/* Gestion des deux formulaires */
 
 .add-movie-cnt form {
     display: flex;
@@ -50,6 +45,8 @@
 .add-movie-cnt form .btn-ctn > .btn:first-of-type {
     margin-right: 15px;
 }
+
+/* Liste des résultats de recherche */
 
 .add-movie-cnt .list-movies {
     display: flex;

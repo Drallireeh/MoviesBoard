@@ -6,6 +6,7 @@ import FormSimilar from './FormSilimar';
 import AddDatas from "./Buttons/AddDatas";
 import RemoveDatas from "./Buttons/RemoveDatas";
 
+// Formulaire d'ajout et de modification d'un film
 const FormMovie = (props) => {
     const [formValues, setFormValues] = useState({
         title: "",
@@ -31,6 +32,7 @@ const FormMovie = (props) => {
     const base_url = "http://image.tmdb.org/t/p/w185";
 
     useEffect(() => {
+        // Initialisation de l'object représentant toutes les données à envoyer par la suite
         if (movieInfo && Object.keys(movieInfo).length !== 0) {
             let actors = [];
             movieInfo.actors.map(actor => {
@@ -65,6 +67,7 @@ const FormMovie = (props) => {
         }
     }, []);
 
+    // On change sur les datas dites "normales" (les simples string par exemple)
     const onUpdateData = event => {
         const target = event.target,
             value = target.value,
@@ -74,7 +77,8 @@ const FormMovie = (props) => {
         data[name] = value;
         setFormValues(data);
     };
-
+    
+    // On change les catégories
     const onUpdateCategories = event => {
         const target = event.target,
             value = target.value;
@@ -85,6 +89,7 @@ const FormMovie = (props) => {
         setFormValues(data);
     };
 
+    // On change sur les acteurs
     const onUpdateActors = (event, index) => {
         const target = event.target,
             value = target.value,
@@ -96,7 +101,8 @@ const FormMovie = (props) => {
         });
         setFormValues(data);
     }
-
+    
+    // On change sur les films similaires
     const onUpdateSimilarMovies = (event, index) => {
         const target = event.target,
             value = target.value,
@@ -109,17 +115,19 @@ const FormMovie = (props) => {
         setFormValues(data);
     }
 
+    // Permet l'ajout d'un acteur
     const AddActors = (e) => {
         e.preventDefault();
 
         let newMovieInfos = { ...formValues }
         newMovieInfos.actors.push({ name: "", photo: "", character: "" });
-        newMovieInfos.id = movieInfo.id;
+        newMovieInfos.id = movieInfo.id; // On doit garder l'id pour la modification (pareil dans les fonctions suivantes)
 
         props.setMovieToAdd({...newMovieInfos});
         delete newMovieInfos.id;
         setFormValues(newMovieInfos);
     }
+    // Permet la suppression d'un acteur
     const removeActors = (e) => {
         e.preventDefault();
 
@@ -131,6 +139,8 @@ const FormMovie = (props) => {
         delete newMovieInfos.id;
         setFormValues(newMovieInfos);
     }
+    
+    // Permet l'ajout d'un film similaire
     const AddSimilarMovies = (e) => {
         e.preventDefault();
 
@@ -142,6 +152,7 @@ const FormMovie = (props) => {
         delete newMovieInfos.id;
         setFormValues(newMovieInfos);
     }
+    // Permet la suppression d'un film similaire
     const removeSimilarMovies = (e) => {
         e.preventDefault();
 
@@ -188,6 +199,7 @@ const FormMovie = (props) => {
                     <label htmlFor="description">Description</label>
                     <textarea required type="text" className="form-control" name="description" id="description" onChange={onUpdateData} defaultValue={formValues.description} placeholder="Description" />
 
+                    {/* Liste des acteurs */}
                     <div>
                         <h2>Acteurs</h2>
 
@@ -203,6 +215,7 @@ const FormMovie = (props) => {
                         }) : <p>Pas d'acteurs connus</p>}
                     </div>
 
+                    {/* Liste des films similaires */}
                     <div>
                         <h2>Films similaires</h2>
 

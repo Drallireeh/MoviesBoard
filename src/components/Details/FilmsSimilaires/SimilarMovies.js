@@ -1,6 +1,7 @@
 import React from 'react';
 import SimilarMovie from "./SimilarMovie";
 
+// Affichage de la liste des films similaires
 const SimilarMovies = (props) => {
     let movies = props.similar_movies;
 

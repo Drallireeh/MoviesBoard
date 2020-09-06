@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Formulaire concernant un film similaire
 const FormSimilar = (props) => {
     let similar = props.similar_movie;
     let index = props.index;

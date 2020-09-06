@@ -2,6 +2,7 @@ import React from 'react';
 import FormMovie from '../Formulaires/FormMovie';
 import axios from 'axios';
 
+// Gestion du formulaire d'édition
 const FormEdit = (props) => {
     let movie = props.movie;
 

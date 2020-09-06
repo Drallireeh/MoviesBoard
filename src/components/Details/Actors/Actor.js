@@ -1,6 +1,7 @@
 import React from 'react';
 import NoImage from "../../../img/no-image.png"
 
+// Affichage d'un acteur
 const Actor = (props) => {
     let actor = props.actor;
     let photo_url = actor.photo === "http://image.tmdb.org/t/p/w185null" ? NoImage : actor.photo;

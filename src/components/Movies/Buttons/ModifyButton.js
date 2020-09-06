@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import '../Movies.css';
 
+// Bouton de modification d'un film
 const ModifyButton = (props) => {
     const movie = props.movie;
 

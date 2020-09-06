@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root')
 
+// popup permettant de demander la validation de la suppression
 function ModalSuppression(props) {
     const customStyles = {
         content: {

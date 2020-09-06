@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../Movies.css';
 
+// Bouton de suppression d'un film
 const DeleteButton = (props) => {
     const movie = props.movie;
 

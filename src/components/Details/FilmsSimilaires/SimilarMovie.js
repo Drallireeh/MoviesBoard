@@ -4,6 +4,7 @@ import DateFormated from "../DateFormated";
 
 import NoImage from "../../../img/no-image.png"
 
+// Affichage d'un film similaire
 const SimilarMovie = (props) => {
     let movie = props.movie;
     let poster_url = movie.poster === "http://image.tmdb.org/t/p/w185null" ? NoImage : movie.poster;

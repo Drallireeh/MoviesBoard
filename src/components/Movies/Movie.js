@@ -8,6 +8,7 @@ import DeleteButton from "./Buttons/DeleteButton";
 
 import './Movies.css';
 
+// Affichage d'un film sous forme de card
 const Movie = (props) => {
     const movie = props.movie;
 

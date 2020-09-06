@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieResult from './MovieResult';
 
+// Liste des films retournés par la requête de recherche
 const MoviesResult = (props) => {
     return (
         <section className="list-movies">

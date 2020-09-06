@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import FormEdit from './FormEdit';
 
+// Gestion de toute la partie edit
 const Edit = (props) => {
     let id = useParams();
 

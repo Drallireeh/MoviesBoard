@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Formulaire d'un acteur
 const FormActor = (props) => {
     let actor = props.actor;
     let index = props.index;

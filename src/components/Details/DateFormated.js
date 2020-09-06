@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Formattage de date pour l'afficher en "français", c'est à dire de façon à ce que ce soit facilement lisible
 const DateFormated = (props) => {
     let dateToDisplay;
     if (props !== undefined) {

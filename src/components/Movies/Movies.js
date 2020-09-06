@@ -6,6 +6,7 @@ import ModalSuppression from "./Validation/ModalSuppression"
 
 import './Movies.css';
 
+// Gestion de la liste des films
 const Movies = (props) => {
     return (
         <section className="list-movies">

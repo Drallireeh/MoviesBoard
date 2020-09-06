@@ -2,7 +2,9 @@ import React from 'react';
 import FormMovie from '../Formulaires/FormMovie';
 import axios from 'axios';
 
+// Gestion du formulaire d'ajout
 const FormAjout = (props) => {
+    // Submit du formulaire d'ajout
     const onSubmit = (event, datas) => {
         event.preventDefault();
         axios.post("http://localhost:3000/movies", datas).then(res => {
