@@ -24,7 +24,7 @@ const Details = (props) => {
                     <img className={movie.backdrop !== "http://image.tmdb.org/t/p/originalnull" ? "poster-img" : "poster-without-backdrop"} src={movie.poster === "http://image.tmdb.org/t/p/w185null" ? noImage : movie.poster} alt={"poster du film " + movie.title} />
                     <h1>{movie.title}</h1>
                     <h2><DateFormated date={movie.release_date} /></h2>
-                    <h2>{movie.categories.join(' / ')}</h2>
+                    <h2>{movie.categories.join(' / ').replace(/ ([^,]*)$/, ' $1')}</h2>
                     <p>{movie.description}</p>
                     <Actors actors={movie.actors} />
                     <SimilarMovies similar_movies={movie.similar_movies} />

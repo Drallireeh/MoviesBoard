@@ -20,9 +20,7 @@ function App() {
 	const [movieToDelete, setMovieToDelete] = useState(null);
 
 	const deleteMovie = () => {
-		console.log("delete movie : ", movieToDelete);
         axios.delete("http://localhost:3000/movies/" + movieToDelete.id).then(res => {
-			console.log(res);
             const movies_to_keep = movies.filter(el => el.id !== movieToDelete.id)
 			setMovies(movies_to_keep);
 			closeModal();
