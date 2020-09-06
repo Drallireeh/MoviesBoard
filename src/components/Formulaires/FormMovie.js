@@ -31,7 +31,7 @@ const FormMovie = (props) => {
     const base_url = "http://image.tmdb.org/t/p/w185";
 
     useEffect(() => {
-        if (movieInfo) {
+        if (movieInfo && Object.keys(movieInfo).length !== 0) {
             let actors = [];
             movieInfo.actors.map(actor => {
                 let actor_photo = actor.profile_path !== undefined ? base_url + actor.profile_path : actor.photo;
@@ -114,17 +114,21 @@ const FormMovie = (props) => {
 
         let newMovieInfos = { ...formValues }
         newMovieInfos.actors.push({ name: "", photo: "", character: "" });
+        newMovieInfos.id = movieInfo.id;
 
-        props.setMovieToAdd(newMovieInfos);
+        props.setMovieToAdd({...newMovieInfos});
+        delete newMovieInfos.id;
         setFormValues(newMovieInfos);
     }
     const removeActors = (e) => {
         e.preventDefault();
 
-        let newMovieInfos = { ...formValues }
+        let newMovieInfos = { ...formValues };
         newMovieInfos.actors.pop();
-
-        props.setMovieToAdd(newMovieInfos);
+        newMovieInfos.id = movieInfo.id;
+        
+        props.setMovieToAdd({...newMovieInfos});
+        delete newMovieInfos.id;
         setFormValues(newMovieInfos);
     }
     const AddSimilarMovies = (e) => {
@@ -132,8 +136,10 @@ const FormMovie = (props) => {
 
         let newMovieInfos = { ...formValues };
         newMovieInfos.similar_movies.push({ title: "", poster: "", release_date: "" });
+        newMovieInfos.id = movieInfo.id;
 
-        props.setMovieToAdd(newMovieInfos);
+        props.setMovieToAdd({...newMovieInfos});
+        delete newMovieInfos.id;
         setFormValues(newMovieInfos);
     }
     const removeSimilarMovies = (e) => {
@@ -141,8 +147,10 @@ const FormMovie = (props) => {
 
         let newMovieInfos = { ...formValues }
         newMovieInfos.similar_movies.pop();
+        newMovieInfos.id = movieInfo.id;
 
-        props.setMovieToAdd(newMovieInfos);
+        props.setMovieToAdd({...newMovieInfos});
+        delete newMovieInfos.id;
         setFormValues(newMovieInfos);
     }
 
@@ -151,7 +159,7 @@ const FormMovie = (props) => {
             {redirectTo.length > 0 ? <Redirect to={redirectTo}></Redirect> : ""}
             {hasFormValues &&
                 <form onSubmit={(e) => {
-                    props.onSubmit(e, formValues)
+                    props.onSubmit(e, formValues);
                     setRedirectTo("/");
                 }}>
 

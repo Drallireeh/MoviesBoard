@@ -18,7 +18,7 @@ const FormEdit = (props) => {
 
     return (
         <section>
-            {movie !== undefined ? <FormMovie movie={movie} onSubmit={onSubmit} setMovieToAdd={props.setMovieToAdd} /> :
+            {movie != null && Object.keys(movie).length !== 0 ? <FormMovie movie={movie} onSubmit={onSubmit} setMovieToAdd={props.setMovieToAdd}/> :
                 <h1>Ce film n'existe pas dans votre base de données</h1>}
         </section>
     );

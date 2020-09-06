@@ -20,12 +20,12 @@ function App() {
 	const [movieToDelete, setMovieToDelete] = useState(null);
 
 	const deleteMovie = () => {
-        axios.delete("http://localhost:3000/movies/" + movieToDelete.id).then(res => {
-            const movies_to_keep = movies.filter(el => el.id !== movieToDelete.id)
+		axios.delete("http://localhost:3000/movies/" + movieToDelete.id).then(res => {
+			const movies_to_keep = movies.filter(el => el.id !== movieToDelete.id)
 			setMovies(movies_to_keep);
 			closeModal();
-        }).catch(err => alert(err));
-    }
+		}).catch(err => alert(err));
+	}
 
 	function openModal(movie) {
 		setMovieToDelete(movie);
@@ -70,9 +70,9 @@ function App() {
 				</nav>
 
 				<main>
-					<Route exact path="/"><Movies movies={movies} setMovies={setMovies} modalIsOpen={modalIsOpen} openModal={openModal} deleteMovie={deleteMovie} closeModal={closeModal}/></Route>
+					<Route exact path="/"><Movies movies={movies} setMovies={setMovies} modalIsOpen={modalIsOpen} openModal={openModal} deleteMovie={deleteMovie} closeModal={closeModal} /></Route>
 					<Route exact path="/ajouter"><AddMovies movies={movies} setMovies={setMovies} /></Route>
-					<Route exact path="/movie/:id"><Details movies={movies} modalIsOpen={modalIsOpen} deleteMovie={deleteMovie} closeModal={closeModal} openModal={openModal}/></Route>
+					<Route exact path="/movie/:id"><Details movies={movies} modalIsOpen={modalIsOpen} deleteMovie={deleteMovie} closeModal={closeModal} openModal={openModal} /></Route>
 					<Route exact path="/movie/modifier/:id"><Edit movies={movies} setMovies={setMovies} /></Route>
 				</main>
 			</div>

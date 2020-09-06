@@ -68,6 +68,7 @@
     justify-content: space-between;
     flex-direction: column;
     height: 450px;
+    margin-bottom: 10px;
 }
 
 .details-card-list > .details-card img {
