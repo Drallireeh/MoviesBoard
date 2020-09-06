@@ -7,8 +7,6 @@ import AddDatas from "./Buttons/AddDatas";
 import RemoveDatas from "./Buttons/RemoveDatas";
 
 const FormMovie = (props) => {
-    console.log("je suis dans la modif : ", props);
-
     const [formValues, setFormValues] = useState({
         title: "",
         poster_path: "",
@@ -96,7 +94,6 @@ const FormMovie = (props) => {
         data["actors"].map(function (data, idx) {
             return idx === index ? data[name] = value : data;
         });
-        console.log("data : ", data["actors"])
         setFormValues(data);
     }
 
@@ -136,7 +133,6 @@ const FormMovie = (props) => {
         let newMovieInfos = { ...formValues };
         newMovieInfos.similar_movies.push({ title: "", poster: "", release_date: "" });
 
-        console.log(newMovieInfos.similar_movies)
         props.setMovieToAdd(newMovieInfos);
         setFormValues(newMovieInfos);
     }

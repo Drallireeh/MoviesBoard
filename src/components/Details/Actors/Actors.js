@@ -3,7 +3,6 @@ import Actor from "./Actor";
 
 const Actors = (props) => {
     let actors = props.actors;
-    console.log("actors props : ", props)
 
     return (
         <div className="actors-ctn">

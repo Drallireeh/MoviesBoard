@@ -10,7 +10,7 @@ const MovieResult = (props) => {
         <div className="movie-result-cnt" to={"/" + props.movie.id}>
             <h2>{props.movie.title}</h2>
             <div>
-                <img src={img_url} alt={"affiche du film" + props.movie.title}/>
+                <img src={img_url} alt={"affiche du film" + props.movie.title} />
             </div>
             <span>{props.movie.release_date === "" || props.movie.release_date === undefined ? "Date inconnue" : "Sorti le " + props.movie.release_date}</span>
             <button className="btn btn-success" onClick={() => props.AddMovie(props.movie.id)}>Ajouter</button>

@@ -36,7 +36,7 @@ const AddMovies = (props) => {
 
     const AddMovie = (id) => {
         const movie = moviesSearch.filter(movie => movie.id === id)[0];
-        
+
         const requestActors = axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
         const requestSimilar = axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
         const requestDetails = axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`);
@@ -49,7 +49,7 @@ const AddMovies = (props) => {
             let genre = details.data.genres;
             let genreArray = genre.map(g => g.name);
 
-            setMovieToAdd({...movie, actors: actors.data.cast.slice(0, 3), similar_movies: similar.data.results.slice(0, 3), categories: genreArray});
+            setMovieToAdd({ ...movie, actors: actors.data.cast.slice(0, 3), similar_movies: similar.data.results.slice(0, 3), categories: genreArray });
         })).catch(err => alert(err));
 
         setIsMovieToAdd(true);

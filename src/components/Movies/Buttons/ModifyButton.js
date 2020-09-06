@@ -8,7 +8,7 @@ const ModifyButton = (props) => {
 
     return (
         <div>
-            <Link className="btn btn-success" to={"/movie/modifier/"  + movie.id}>Modifier</Link>
+            <Link className="btn btn-success" to={"/movie/modifier/" + movie.id}>Modifier</Link>
         </div>
     );
 };

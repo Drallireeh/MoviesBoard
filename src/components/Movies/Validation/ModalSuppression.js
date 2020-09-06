@@ -4,8 +4,6 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root')
 
 function ModalSuppression(props) {
-    console.log("MODA : ", props)
-
     const customStyles = {
         content: {
             top: '50%',
@@ -25,7 +23,7 @@ function ModalSuppression(props) {
         >
             <p>Êtes vous sûrs de vouloir supprimer ce film ?</p>
             <div className="modal-bnt-ctn">
-               <button className="btn btn-success" onClick={props.deleteMovie}>Oui</button>
+                <button className="btn btn-success" onClick={props.deleteMovie}>Oui</button>
                 <button className="btn btn-danger" onClick={props.closeModal}>Non</button>
             </div>
         </Modal>

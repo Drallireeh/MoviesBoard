@@ -4,7 +4,6 @@ import '../Movies.css';
 
 const DeleteButton = (props) => {
     const movie = props.movie;
-    console.log("DELETE PROPS :", props)
 
     return (
         <div>

@@ -2,7 +2,6 @@ import React from 'react';
 import SimilarMovie from "./SimilarMovie";
 
 const SimilarMovies = (props) => {
-    console.log("similar movies props : ", props)
     let movies = props.similar_movies;
 
     return (

@@ -18,14 +18,14 @@ const Movie = (props) => {
                 <div className="img-ctn">
                     <img onError={(e) => {
                         e.target.src = NoImage;
-                    }} src={movie.poster !== "" ? movie.poster : ""} alt={"affiche du film" + movie.title}/>
+                    }} src={movie.poster !== "" ? movie.poster : ""} alt={"affiche du film" + movie.title} />
                 </div>
                 <p>{movie.description}</p>
                 <span>Sorti le {movie.release_date}</span>
             </Link>
             <div>
-                <ModifyButton movie={movie}/>
-                <DeleteButton movie={movie} openModal={props.openModal}/>
+                <ModifyButton movie={movie} />
+                <DeleteButton movie={movie} openModal={props.openModal} />
             </div>
         </div>
     );
