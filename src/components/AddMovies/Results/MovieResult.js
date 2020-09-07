@@ -1,6 +1,8 @@
 import React from 'react';
 import '../AddMovies.css';
-import noImage from "../../../img/no-image.png"
+import noImage from "../../../img/no-image.png";
+
+import DateFormated from "../../DateFormated";
 
 const MovieResult = (props) => {
     const base_img_url = "http://image.tmdb.org/t/p/w185";
@@ -14,7 +16,7 @@ const MovieResult = (props) => {
                 <img src={img_url} alt={"affiche du film" + props.movie.title} />
             </div>
             {/* Gestion du cas où on ne connait pas la date de sortie */}
-            <span>{props.movie.release_date === "" || props.movie.release_date === undefined ? "Date inconnue" : "Sorti le " + props.movie.release_date}</span>
+            <span>{props.movie.release_date === "" || props.movie.release_date === undefined ? "Date inconnue" : <DateFormated date={props.movie.release_date} />}</span>
             <button className="btn btn-success" onClick={() => props.AddMovie(props.movie.id)}>Ajouter</button>
         </div>
     );

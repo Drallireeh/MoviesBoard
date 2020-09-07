@@ -6,7 +6,7 @@ import SimilarMovies from './FilmsSimilaires/SimilarMovies';
 import ModifyButton from "../Movies/Buttons/ModifyButton";
 import DeleteButton from "../Movies/Buttons/DeleteButton";
 import ModalSuppression from "../Movies/Validation/ModalSuppression";
-import DateFormated from "./DateFormated"
+import DateFormated from "../DateFormated";
 
 import noImage from "../../img/no-image.png";
 

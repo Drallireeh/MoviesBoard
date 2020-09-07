@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DateFormated from "../DateFormated";
+import DateFormated from "../../DateFormated";
 
 import NoImage from "../../../img/no-image.png"
 

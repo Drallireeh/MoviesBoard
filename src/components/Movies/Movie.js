@@ -5,6 +5,7 @@ import NoImage from "../../img/no-image.png"
 
 import ModifyButton from "./Buttons/ModifyButton";
 import DeleteButton from "./Buttons/DeleteButton";
+import DateFormated from "../DateFormated";
 
 import './Movies.css';
 
@@ -22,7 +23,7 @@ const Movie = (props) => {
                     }} src={movie.poster !== "" ? movie.poster : ""} alt={"affiche du film" + movie.title} />
                 </div>
                 <p>{movie.description}</p>
-                <span>Sorti le {movie.release_date}</span>
+                <span>Sorti le <DateFormated date={movie.release_date} /></span>
             </Link>
             <div>
                 <ModifyButton movie={movie} />
